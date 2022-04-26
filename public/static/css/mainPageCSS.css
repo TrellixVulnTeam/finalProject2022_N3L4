@@ -1,0 +1,82 @@
+
+main>div {
+    position: relative;
+}
+
+.topDishes {
+    margin-top: 128px;
+    margin-bottom: 200px;
+}
+
+.topDishesCards {
+    position: relative;
+}
+
+.topDishesText {
+    font-family: Bad Script;
+    position: relative;
+}
+
+.topDishesText button {
+    /* font-family: ; */
+    position: absolute;
+    bottom: 12%;
+    right: 3%;
+}
+
+.topDishesCards::before, .topDishesCards::after {
+    position: absolute;
+    content: '';
+    width: 42px;
+    height: 63px;
+    top: 50%;
+}
+
+.topDishesCards::before {
+    background-image: url(/images/leftArrow.png);
+    left: -72px;
+}
+
+.topDishesCards::after {
+    background-image: url(/images/rightArrow.png);
+    right: -72px;
+}
+
+.topDish:first-child {
+    padding-left: 0 !important;
+}
+
+.topDish:last-child {
+    padding-right: 0 !important;
+}
+
+.topDishTag {
+    background: rgba(254, 184, 154, 0.59);
+    height: 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 10%;
+}
+
+.topDishText {
+    position: relative;
+}
+
+.topDishTags {
+    margin-bottom: 5px;
+}
+
+.topDishGoAway {
+    position: absolute;
+    background-color: #FEB89A;
+    bottom: 0;
+    right: 0;
+    width: 108.82px;
+    height: 26px;
+    font-size: 14px;
+    line-height: 67%;
+}
+
+.topDishDesc {
+    width: 198px;
+}
