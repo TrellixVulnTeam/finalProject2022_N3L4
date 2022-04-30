@@ -4,7 +4,6 @@ function regMenu() {
         case "signIn":
             $("body>div").append($("<div>").addClass("col-lg-6 offset-lg-3").css("padding", "122px 89px 173px 89px").css("background-color", "white"))
             break;
-    
         case "signUp":
             $("body>div").append($("<div>").addClass("col-lg-6 offset-lg-3").css("padding", "122px 44px 104px 89px").css("background-color", "white"))
             break;
@@ -12,9 +11,8 @@ function regMenu() {
 }
 $("#searchForm").click( function () {
     if ($(this).children("button").attr("class") != "btn btn-outline-success"){
-        console.log(1);
         $(this).children("button").remove()
-        $(this).append($("<input>").attr("class", "form-control me-2").attr("type", "search").attr("placeholder", "Search").attr("name", "search").attr("aria-label", "Search").focus())
+        $(this).append($("<input>").attr("class", "form-control me-2").attr("type", "search").attr("placeholder", "Search").attr("aria-label", "Search").attr("name", "search").focus())
         $(this).append($("<button>").attr("class", "btn btn-outline-success").attr("type", "submit").text("Search"))
     }
 })
