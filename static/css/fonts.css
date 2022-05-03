@@ -1,9 +1,0 @@
-@font-face {
-    font-family: "Bad Script";
-    src: url(/fonts/BadScript-Regular.ttf);
-}
-
-body a {
-    text-decoration: none;
-    color: black;
-}
