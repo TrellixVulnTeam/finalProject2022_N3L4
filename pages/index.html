@@ -45,10 +45,18 @@
                 <button class="btn">Увидеть все</button>
             </div>
             <div class="topDishesCards row gx-4">
-                {% include "templates/topDishesCard.html" %}
-                {% include "templates/topDishesCard.html" %}
-                {% include "templates/topDishesCard.html" %}
-                {% include "templates/topDishesCard.html" %}
+                {% for item in items %}
+                    {% include "templates/topDishesCard.html" %}
+                {% endfor %}
+                {% for item in items %}
+                    {% include "templates/topDishesCard.html" %}
+                {% endfor %}
+                {% for item in items %}
+                    {% include "templates/topDishesCard.html" %}
+                {% endfor %}
+                {% for item in items %}
+                    {% include "templates/topDishesCard.html" %}
+                {% endfor %}
             </div>
         </div>
     </main>

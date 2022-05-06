@@ -1,3 +1,12 @@
+
+// let xhr = new XMLHttpRequest();
+// xhr.open("get", "/")
+// xhr.send()
+// xhr.timeout = 10000
+// xhr.onload = ( function () {
+//     console.log(xhr);
+// })
+
 function regMenu() {
     $(document).off("click");
     toggleHidden($("#profile").children("div"))
