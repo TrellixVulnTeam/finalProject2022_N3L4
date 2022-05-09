@@ -61,7 +61,7 @@ app.get('/', (req, res) => {
 
 
 app.get('/search', (request, response) => {
-    const search = request.query.search;
+    const search = request.query.q;
     let SearchedList = [];
     get_data("search", []).then((resolve) => {
         // const data = { resolve };
