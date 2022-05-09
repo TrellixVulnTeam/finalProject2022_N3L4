@@ -34,19 +34,39 @@
                     <button class="btn"  id="signIn">Войти<br>в аккаунт</button>
                     <button class="btn" id="signUp">Зарегистрировать<br>аккаунт</button>
                 </div>
-                <div id="logMenus" class="row align-items-center hidden">
-                    <div id="logCurrentMenu" class="col-lg-6 offset-lg-3" style="padding: 0; background-color: white; z-index: 100; font-family: Inter;">
-                        <div id="signIn" style="padding: 122px 89px 173px 89px; text-align: left;">
-                            <p style="font-size: 48px; display: block;">Войти в аккаунт</p>
+                <div id="logMenus" class="row align-items-center shown">
+                    <div id="logCurrentMenu" class="col-auto mx-auto">
+                        <div id="signIn" style="padding: 122px 89px 137px 89px; text-align: left;">
+                            <p class="logMenuH">Войти в аккаунт</p>
                             <form action="">
-                                <div id="e-mail" style="border-radius: 12px; display: block;">
-                                    <p style="font-size: 19px; display: inline-block;">Почта</p>
+                                <div class="inputHolder" id="e-mail">
+                                    <p class="logMenuP">Почта</p>
+                                    <input class="logMenuInput" type="text" name="userE-Mail">
                                 </div>
-                                <div></div>
+                                <div class="inputHolderL" id="password">
+                                    <p class="logMenuP">Пароль</p>
+                                    <input class="logMenuInput" type="text" name="userE-Mail">
+                                </div>
+                                <div class="row">
+                                    <div class="col-auto mx-auto">
+                                        <button class="loMenuBtn">Войти</button>
+                                        <p class="logMenusMiniText">Войти по номеру телефона</a> 
+                                    </div>
+                                </div>
                             </form>
                         </div>
-                        <div id="signUp" style="padding: 122px 44px 104px 89px; display: none;">
-
+                        <div id="signUp" style="display: none;">
+                            <p class="logMenuH">Войти в аккаунт</p>
+                            <form action="">
+                                <div class="inputHolder" id="phoneNumber">
+                                    <p class="logMenuP">Номер телеофна</p>
+                                    <input class="logMenuInput" type="text" name="userE-Mail">
+                                </div>
+                                <div class="inputHolder" id="password">
+                                    <p class="logMenuP">Код</p>
+                                    <input class="logMenuInput" type="text" name="userE-Mail">
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
