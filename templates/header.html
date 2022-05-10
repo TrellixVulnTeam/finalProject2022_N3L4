@@ -24,47 +24,173 @@
                 </button>
             </form>
             <div id="profile" style="margin-left: 25px; margin-top: 15px; position: relative;">
-                <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="25.5241" cy="25.4823" r="25.4823" fill="#C4C4C4"/>
-                <circle cx="25.2967" cy="14.7889" r="8.87331" fill="black"/>
-                <path d="M3.45459 37.5408C10.0527 29.2742 28.2089 17.701 48.0487 37.5408C40.9955 49.827 18.0159 60.839 3.45459 37.5408Z" fill="black" stroke="black"/>
-                </svg>
+                <img src="/images/profileImg.svg" alt="123">
                 <div id="profileMiniMenu" class="hidden">
                     <img src="" alt="profileMiniMenuImg">
-                    <button class="btn"  id="signIn">Войти<br>в аккаунт</button>
-                    <button class="btn" id="signUp">Зарегистрировать<br>аккаунт</button>
+                    <button class="btn"  id="signInE">Войти<br>в аккаунт</button>
+                    <button class="btn" id="signUpE">Зарегистрировать<br>аккаунт</button>
                 </div>
                 <div id="logMenus" class="row align-items-center hidden">
                     <div id="logCurrentMenu" class="col-auto mx-auto">
-                        <div id="signIn" style="padding: 122px 89px 137px 89px; text-align: left;">
+                        <div id="signInE">
                             <p class="logMenuH">Войти в аккаунт</p>
                             <form action="">
-                                <div class="inputHolder" id="e-mail">
+                                <div class="inputHolderR inputHolder">
                                     <p class="logMenuP">Почта</p>
-                                    <input class="logMenuInput" type="text" name="userE-Mail">
+                                    <input class="logMenuInput" type="text" name="userEMailSIE">
                                 </div>
-                                <div class="inputHolderL" id="password">
+                                <div class="inputHolderR inputHolderL">
                                     <p class="logMenuP">Пароль</p>
-                                    <input class="logMenuInput" type="text" name="userE-Mail">
+                                    <input class="logMenuInput" type="text" name="userPasswordSIE">
                                 </div>
                                 <div class="row">
                                     <div class="col-auto mx-auto">
                                         <button class="loMenuBtn">Войти</button>
-                                        <p class="logMenusMiniText">Войти по номеру телефона</a> 
+                                        <p class="logMenusMiniText" id="signInP">Войти по номеру телефона</a>
+                                        <p class="logMenusMiniText" id="passwordResetEC">Забыли пароль?</p>
                                     </div>
                                 </div>
                             </form>
                         </div>
-                        <div id="signUp" style="display: none;">
+                        <div id="signInP">
                             <p class="logMenuH">Войти в аккаунт</p>
                             <form action="">
-                                <div class="inputHolder" id="phoneNumber">
+                                <div class="inputHolderR inputHolder">
                                     <p class="logMenuP">Номер телеофна</p>
-                                    <input class="logMenuInput" type="text" name="userE-Mail">
+                                    <input class="logMenuInput" type="text" name="userPhoneNumberSIP">
                                 </div>
-                                <div class="inputHolder" id="password">
+                                <div class="inputHolderR inputHolderL">
                                     <p class="logMenuP">Код</p>
-                                    <input class="logMenuInput" type="text" name="userE-Mail">
+                                    <input class="logMenuInput" type="text" name="userTypedCodeSIP">
+                                </div>
+                                <div class="row">
+                                    <div class="col-auto mx-auto">
+                                        <button class="loMenuBtn">Войти</button>
+                                        <p class="logMenusMiniText">Забыли пароль?</p>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="signUpE" class="row">
+                            <div class="col-auto">
+                                <p class="logMenuH">Создать аккаунт</p>
+                                <form action="">
+                                    <div class="row gx-0">
+                                        <div class="col-6 inputNS">
+                                            <div class="inputHolder">
+                                                <p class="logMenuP">Имя</p>
+                                                <input class="logMenuInput" type="text" name="userNameSUE" style="width: 165px">
+                                            </div>
+                                        </div>
+                                        <div class="col-6 inputNS">
+                                            <div class="inputHolder">
+                                                <p class="logMenuP">Фамилия</p>
+                                                <input class="logMenuInput" type="text" name="userSurnameSUE" style="width: 165px">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="inputHolderR inputHolder">
+                                        <p class="logMenuP">Почта</p>
+                                        <input class="logMenuInput" type="text" name="userEmailSUE">
+                                    </div>
+                                    <div class="inputHolderR inputHolder">
+                                        <p class="logMenuP">Пароль</p>
+                                        <input class="logMenuInput" type="text" name="userPasswordSUE">
+                                    </div>
+                                    <div class="inputHolderR inputHolderL">
+                                        <p class="logMenuP">Пароль ещё раз</p>
+                                        <input class="logMenuInput" type="text" name="userPasswordAgainSUE">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <button class="loMenuBtn" style="width: 198px;" id="signUpP">Другой способ</button>
+                                        </div>
+                                        <div class="col-6">
+                                            <button class="loMenuBtn" style="width: 198px;">Зарегистрироваться</button>
+                                        </div>  
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col" style="margin-left: 111px;">
+                                <img src="" alt="123">
+                                <p class="imgDesc">какой-нибудь текст<br>под фото блюда</p>
+                            </div>
+                        </div>
+                        <div id="signUpP" class="row">
+                            <div class="col-auto">
+                                <p class="logMenuH">Создать аккаунт</p>
+                                <form action="">
+                                    <div class="row gx-0">
+                                        <div class="col-6 inputNS">
+                                            <div class="inputHolder">
+                                                <p class="logMenuP">Имя</p>
+                                                <input class="logMenuInput" type="text" name="userNameSUP" style="width: 165px">
+                                            </div>
+                                        </div>
+                                        <div class="col-6 inputNS">
+                                            <div class="inputHolder">
+                                                <p class="logMenuP">Фамилия</p>
+                                                <input class="logMenuInput" type="text" name="userSurnameSUP" style="width: 165px">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="inputHolderR inputHolder">
+                                        <p class="logMenuP">Номер телефона</p>
+                                        <input class="logMenuInput" type="text" name="userPhoneNumberSUP">
+                                    </div>
+                                    <div class="inputHolderR inputHolderL">
+                                        <p class="logMenuP">Код</p>
+                                        <input class="logMenuInput" type="text" name="useTypedCodeSUP">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 hidden">
+                                            <button class="loMenuBtn" style="width: 198px;">Повторно отправить код</button>
+                                        </div>
+                                        <div class="col-6">
+                                            <button class="loMenuBtn" style="width: 198px;">Зарегистрироваться</button>
+                                        </div>  
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col" style="margin-left: 111px;">
+                                <img src="" alt="123">
+                                <p class="imgDesc">какой-нибудь текст<br>под фото блюда</p>
+                            </div>
+                        </div>
+                        <div id="passwordResetEC">
+                            <p class="logMenuH">Сбросить пароль</p>
+                            <form action="">
+                                <div class="inputHolderR inputHolder">
+                                    <p class="logMenuP">Почта</p>
+                                    <input class="logMenuInput" type="text" name="userEMailPRC">
+                                </div>
+                                <div class="inputHolderR inputHolderL">
+                                    <p class="logMenuP">Код</p>
+                                    <input class="logMenuInput" type="text" name="userTypedCodedPRC">
+                                </div>
+                                <div class="row">
+                                    <div class="col-auto mx-auto">
+                                        <button class="loMenuBtn">Отправить код</button>
+                                        <p class="logMenusMiniText">Отправить код повторно</p>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="passwordResetEP">
+                            <p class="logMenuH">Сбросить пароль</p>
+                            <form action="">
+                                <div class="inputHolderR inputHolder">
+                                    <p class="logMenuP">Пароль</p>
+                                    <input class="logMenuInput" type="text" name="userTypedCodedPRNP">
+                                </div>
+                                <div class="inputHolderR inputHolderL">
+                                    <p class="logMenuP">Пароль ещё раз</p>
+                                    <input class="logMenuInput" type="text" name="userTypedCodedPRNPA">
+                                </div>
+                                <div class="row">
+                                    <div class="col-auto mx-auto">
+                                        <button class="loMenuBtn">Восстановить пароль</button>
+                                    </div>
                                 </div>
                             </form>
                         </div>

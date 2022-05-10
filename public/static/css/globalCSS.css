@@ -7,6 +7,10 @@
     src: url(/fonts/Inter-Regular.ttf);
 }
 
+form {
+    display: inline-block;
+}
+
 a {
     text-decoration: none;
     color: black;
@@ -24,6 +28,15 @@ a {
 
 #logCurrentMenu p {
     margin: 0;
+}
+div#signInE, div#signInP, div#passwordResetEP, div#passwordResetEC {
+    padding: 122px 89px 137px 89px;
+    text-align: left;
+}
+
+div#signUpE, div#signUpP {
+    padding: 122px 44px 137px 89px;
+    text-align: left;
 }
 
 #logCurrentMenu {
@@ -63,9 +76,12 @@ a {
     display: block;
     background-color: #C4C4C4;
     height: 74px;
-    width: 425px;
     border-radius: 12px;
     margin-bottom: 14px;
+}
+
+.inputHolderR {
+    width: 425px;
 }
 
 .inputHolder:first-child {
@@ -78,10 +94,46 @@ a {
 
 .loMenuBtn  {
     font-size: regular;
-    width: 392px;
     height: 74px;
+    width: 392px;
     border: 0;
     background-color: #C4C4C4;
     border-radius: 33px;
     display: block;
+}
+
+.logMenusMiniText {
+    margin-left: 12px !important;
+    display: inline-block;
+}
+
+.logMenusMiniText:hover {
+    color: blue;
+    cursor: pointer;
+}
+
+.logMenusMiniText:last-child {
+    text-decoration: underline;
+    float: right;
+}
+
+
+.inputNS:last-child {
+    padding-left: 15px;
+}
+
+.inputNS:first-child {
+    padding-right: 15px;
+}
+
+#signUpE img, #signUpP img {
+    margin-top: 29px;
+    width: 366px;
+    height: 402px;
+}
+
+.imgDesc {
+    text-align: right;
+    width: 366px;
+    margin-top: 20px !important;
 }

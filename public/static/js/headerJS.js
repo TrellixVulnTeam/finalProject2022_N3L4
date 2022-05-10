@@ -8,18 +8,20 @@
 // })
 
 function regMenu() {
-    $(document).off("click");
-    toggleHidden($("#profile").children("div"))
-    toggleHidden($(`#logMenus>#${$(this).attr("id")}`))
+    if ($(this).attr("id") == "signUpE" || $(this).attr("id") == "signInE") {
+        $(document).off("click");
+        toggleHidden($("#profile").children("div"))
+        toggleHidden($(`#logMenus>#${$(this).attr("id")}`))
+        $("#logMenus").click(function (e) { if ($(e.target).closest("#logCurrentMenu").length) { return } toggleHidden($("#logMenus")); $("#logMenus").off("click")})
+    }
     $("#logCurrentMenu>div").css("display", "none")
     $(`#logCurrentMenu>#${$(this).attr("id")}`).css("display", "")
-    $("#logMenus").click(function (e) { if ($(e.target).closest("#logCurrentMenu").length) { return } toggleHidden($("#logMenus")); $("#logMenus").off("click")})
 }
 function toggleHidden(Obj) {
     Obj.toggleClass("hidden shown")
 }
 
-$("#profileMiniMenu>#signIn, #profileMiniMenu>#signUp").click(regMenu)
+$("button#signInE, button#signUpE, button#signUpP, p#passwordResetEC, p#signInP").click(regMenu)
 $("#searchForm").click( function () {
     if ($(this).children("button").attr("class") != "btn btn-outline-success"){
         $(this).children("button").remove()
@@ -27,8 +29,8 @@ $("#searchForm").click( function () {
         $(this).append($("<button>").attr("class", "btn btn-outline-success").attr("type", "submit").text("Search"))
     }
 })
-$("#profile").hover( function () {
-    if ($(this).children("div").attr("class") == "hidden") {
-        toggleHidden($(this).children("#profileMiniMenu"))
+$("#profile :not(#logMenus)").hover( function () {
+    if ($(this).parent().children("div").attr("class") == "hidden") {
+        toggleHidden($(this).parent().children("#profileMiniMenu"))
     }
 }, function () { $(document).click(function (e) { if ($(e.target).closest("#profile").length) { return } toggleHidden($("#profile").children("#profileMiniMenu")); $(document).off("click"); })})
