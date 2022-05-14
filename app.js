@@ -4,8 +4,24 @@ const port = 3000
 const host = '127.0.0.1';
 const sqlite = require('sqlite3');
 const stringSimilarity = require("string-similarity");
-//=)
 
+//<redis>
+var redis = require('redis');
+// var client = redis.createClient();
+
+const client = redis.createClient({
+    url: `redis://${host}:3001`
+  })
+
+client.on('connect', function() {
+    console.log('connected');
+});
+
+await client.connect()
+
+client.quit()
+
+//</redis>
 app.use(express.static(__dirname + '/public/static'));
 
 const nunjucks = require('nunjucks');
