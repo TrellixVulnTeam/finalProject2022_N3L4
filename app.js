@@ -15,6 +15,8 @@ var client = redis.createClient();
 app.use(express.static(__dirname + '/public/static'));
 
 const nunjucks = require('nunjucks');
+const res = require('express/lib/response');
+const req = require('express/lib/request');
 nunjucks.configure('.', {
     autoescape: true,
     express: app
@@ -73,7 +75,7 @@ app.get('/', (req, res) => {
     get_data("all", []).then((resolve) => {
         for (i = 0; i < resolve.length; i++) {
         }
-        console.log(l)
+        console.log(resolve)
         // res.send("hello")
         res.render(__dirname + '/pages/index.html', resolve);
     })
@@ -108,8 +110,8 @@ app.get('/search', (request, response) => {
 })
 app.get('/bettersearch', function (request, response) {
     get_data("all", []).then((resolve) => {
-    response.render(__dirname + '/pages/bsearch.html', resolve);
-})
+        response.render(__dirname + '/pages/bsearch.html', resolve);
+    })
 })
 //     let categorybox = request.query.categorycheckbox;
 //     let categoryradio = request.query.category;
@@ -136,12 +138,37 @@ app.get('/bettersearch1', (request, res) => {
     let q1 = String(request.query.q1);
     let q2 = String(request.query.q2);
     let q3 = String(request.query.q3);
-    get_data("bSearchCheclBx", [q1,q2,q3]).then((resolve) => {
+    get_data("bSearchCheclBx", [q1, q2, q3]).then((resolve) => {
         res.json(resolve);
         // res.render(__dirname + '/pages/bsearch.html', resolve);
     })
 })
 
+app.get("/index", (request, response) => {
+    var items = {
+        "cards":
+        [{
+            "image": ".png",
+            "name": "Жаркое",
+            "tags": [{ "tagName": "asd" }, { "tagName": "dsa" }],
+            "descripton": "Lorem ipsum dolor sit amet.",
+            "preptime": "1 час",
+            "ingredients": [{ "name": "морковь", "count": "1шт" }, { "name": "сметана", "count": "1 ст.л." }],
+            "dishId": 0
+        },
+        {
+            "image": ".png",
+            "name": "Жаркое",
+            "tags": [{ "tagName": "asd" }, { "tagName": "dsa" }],
+            "descripton": "Lorem ipsum dolor sit amet.",
+            "preptime": "1 час",
+            "ingredients": [{ "name": "морковь", "count": "1шт" }, { "name": "сметана", "count": "1 ст.л." }],
+            "dishId": 1
+        }]
+    };
+    response.send(items.cards[request.dishId]);
+    // response.render(__dirname + "/pages/index.html", items)
+})
 
 app.listen(port, function () {
     console.log(`Server stated on: http://${host}:${port}`)
