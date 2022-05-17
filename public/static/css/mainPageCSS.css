@@ -59,7 +59,7 @@ main>div {
     margin-bottom: 5px;
 }
 
-.topDishGoAway {
+.topDishGoAway, .dishShowRecipe {
     position: absolute;
     background-color: #FEB89A;
     bottom: 0;
@@ -69,6 +69,7 @@ main>div {
     font-size: 14px;
     line-height: 67%;
 }
+
 
 .topDishDesc {
     width: 198px;
@@ -91,4 +92,12 @@ main>div {
     top: 0;
     right: 0;
     z-index: 99;
+}
+
+.dishImg {
+    width: 100%;
+}
+
+.cardText li {
+    list-style-type: none;
 }

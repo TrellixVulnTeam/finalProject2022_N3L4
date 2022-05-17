@@ -7,16 +7,20 @@
 //     console.log(xhr);
 // })
 
+// Написать пример того, что возвращается в шаблон {"items": [] } 
+// or
+// добавить закомментированные возвраты данных через res.send(result) вместо res.render(__dirname ..., result)
+
 function regMenu() {
-    if ($(this).attr("id") == "signUpE" || $(this).attr("id") == "signInE") {
-        $(document).off("click");
-        toggleHidden($("#profile").children("div"))
-        toggleHidden($(`#logMenus>#${$(this).attr("id")}`))
+    console.log($("#logMenus").attr("class"));
+    if ($("#logMenus").attr("class").split(" ").indexOf("hidden") != -1) {
+        toggleHidden($("#logMenus"))
         $("#logMenus").click(function (e) { if ($(e.target).closest("#logCurrentMenu").length) { return } toggleHidden($("#logMenus")); $("#logMenus").off("click")})
     }
     $("#logCurrentMenu>div").css("display", "none")
     $(`#logCurrentMenu>#${$(this).attr("id")}`).css("display", "")
 }
+
 function toggleHidden(Obj) {
     Obj.toggleClass("hidden shown")
 }
@@ -33,4 +37,4 @@ $("#profile :not(#logMenus)").hover( function () {
     if ($(this).parent().children("div").attr("class") == "hidden") {
         toggleHidden($(this).parent().children("#profileMiniMenu"))
     }
-}, function () { $(document).click(function (e) { if ($(e.target).closest("#profile").length) { return } toggleHidden($("#profile").children("#profileMiniMenu")); $(document).off("click"); })})
+}, function () { $(document).off("click").click(function (e) { if ($(e.target).closest("#profile").length) { return } toggleHidden($("#profileMiniMenu")); $(document).off("click"); })})
