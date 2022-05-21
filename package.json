@@ -6,6 +6,7 @@
     "express-session": "^1.17.2",
     "nunjucks": "^3.2.3",
     "redis": "^4.1.0",
+    "redis-sessions": "^3.0.0",
     "sqlite3": "^5.0.8",
     "string-similarity": "^4.0.4"
   }

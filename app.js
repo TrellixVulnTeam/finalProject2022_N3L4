@@ -8,9 +8,29 @@ var bodyParser = require('body-parser')
 app.use(bodyParser.json())
 
 //<redis>
-var redis = require('redis');
-var client = redis.createClient();
+const session = require('express-session');
+const redis = require('redis');
+const connectRedis = require('connect-redis');
+const RedisStore = connectRedis(session);
 
+const redisClient = redis.createClient({
+    port: 6379,
+    host: 'localhost'
+});
+
+app.use(session({
+    store: new RedisStore({client: redisClient}),
+    secret: 'mySecret',
+    saveUninitialized: false,
+    resave: false, 
+    cookie: {
+        secure: false, // if true: only transmit cookie over https
+        httpOnly: true, // if true: prevents client side JS from reading the cookie
+        maxAge: 1000 * 60 * 30, // session max age in milliseconds
+        sameSite: 'lax' // make sure sameSite is not none
+    }
+}));
+console.log(redis['host'],redis['port'])
 //</redis>
 app.use(express.static(__dirname + '/public/static'));
 
@@ -45,14 +65,14 @@ async function get_data(query, data_query) {
     }
     // console.log(data_query);
 
-    // console.log(`SELECT * FROM recipe IN ('${data_query.join("', '")}')`);
+    console.log(`SELECT * FROM recipe WHERE category IN('${data_query.join("', '")}')`);
     let sql_queries = {
         all: "SELECT * FROM recipe",
         search: "SELECT * FROM recipe",
-        bSearchCheclBx: `SELECT * FROM recipe IN ('${data_query.join("', '")}')`
+        bSearchCheclBx: `SELECT * FROM recipe WHERE category IN('${data_query.join("', '")}')`//SELECT * FROM recipe WHERE category IN('lunch', 'supper', 'lunch')//`SELECT * FROM recipe WHERE category IN('${data_query.join("', '")}')`
     }
     let sql = sql_queries[query];
-
+    console.log(sql_queries.bSearchCheclBx);
     //let sql = "SELECT * FROM users";
 
     let promise = new Promise((resolve, reject) => {

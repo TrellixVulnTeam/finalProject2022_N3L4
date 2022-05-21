@@ -3,7 +3,7 @@
     <div class="topDishText">
         <p style="font-size: 24px;">{{ item.name }}</p>
         <div class="topDishTags">
-            {% for tag in item.tags %}
+            {% for item in tags %}
             <a href="#" class="topDishTag btn">{{ item.tag }}</a>
             {% endfor %}
         </div>
