@@ -20,9 +20,9 @@
 </head>
 
 <body>
-    <div id="logMenus" class="row align-items-center shown">
-        <div id="logCurrentMenu" class="col-lg-4 col-md-6 col-sm-8 col-xs-12 mx-auto" style="display: none;">
-            <div id="signInE" style="display: none;">
+    <div id="logMenus" class="row align-items-center hidden">
+        <div id="logCurrentMenu" class="col-lg-4 col-md-6 col-sm-8 col-xs-12 mx-auto">
+            <div id="signInE">
                 <p class="logMenuH">Войти в аккаунт</p>
                 <form action="">
                     <div class="inputHolderR inputHolder">
@@ -35,14 +35,14 @@
                     </div>
                     <div class="row">
                         <div class="col-auto mx-auto">
-                            <button class="loMenuBtn">Войти</button>
+                            <button class="loMenuBtn enterButton">Войти</button>
                             <p class="logMenusMiniText" id="signInP">Войти по номеру телефона</a>
                             <p class="logMenusMiniText" id="passwordResetEC">Забыли пароль?</p>
                         </div>
                     </div>
                 </form>
             </div>
-            <div id="signInP" style="display: none;">
+            <div id="signInP">
                 <p class="logMenuH">Войти в аккаунт</p>
                 <form action="">
                     <div class="inputHolderR inputHolder">
@@ -55,13 +55,13 @@
                     </div>
                     <div class="row">
                         <div class="col-auto mx-auto">
-                            <button class="loMenuBtn">Войти</button>
+                            <button class="loMenuBtn enterButton">Войти</button>
                             <p class="logMenusMiniText">Забыли пароль?</p>
                         </div>
                     </div>
                 </form>
             </div>
-            <div id="signUpE" class="row" style="display: none;">
+            <div id="signUpE" class="row">
                 <div class="col-auto">
                     <p class="logMenuH">Создать аккаунт</p>
                     <form action="">
@@ -96,7 +96,7 @@
                                 <button class="loMenuBtn" style="width: 198px;" id="signUpP">Другой способ</button>
                             </div>
                             <div class="col-6">
-                                <button class="loMenuBtn" style="width: 198px;">Зарегистрироваться</button>
+                                <button class="loMenuBtn enterButton" style="width: 198px;">Зарегистрироваться</button>
                             </div>
                         </div>
                     </form>
@@ -106,7 +106,7 @@
                     <p class="imgDesc">какой-нибудь текст<br>под фото блюда</p>
                 </div>
             </div>
-            <div id="signUpP" class="row" style="display: none;">
+            <div id="signUpP" class="row">
                 <div class="col-auto">
                     <p class="logMenuH">Создать аккаунт</p>
                     <form action="">
@@ -137,7 +137,7 @@
                                 <button class="loMenuBtn" style="width: 198px;">Повторно отправить код</button>
                             </div>
                             <div class="col-6">
-                                <button class="loMenuBtn" style="width: 198px;">Зарегистрироваться</button>
+                                <button class="loMenuBtn enterButton" style="width: 198px;">Зарегистрироваться</button>
                             </div>
                         </div>
                     </form>
@@ -147,7 +147,7 @@
                     <p class="imgDesc">какой-нибудь текст<br>под фото блюда</p>
                 </div>
             </div>
-            <div id="passwordResetEC" style="display: none;">
+            <div id="passwordResetEC">
                 <p class="logMenuH">Сбросить пароль</p>
                 <form action="">
                     <div class="inputHolderR inputHolder">
@@ -166,7 +166,7 @@
                     </div>
                 </form>
             </div>
-            <div id="passwordResetEP" style="display: none;">
+            <div id="passwordResetEP">
                 <p class="logMenuH">Сбросить пароль</p>
                 <form action="">
                     <div class="inputHolderR inputHolder">
@@ -185,7 +185,7 @@
                 </form>
             </div>
         </div>
-        <div id="logCurrentMenu" class="col-lg-6 col-md-8 col-sm-8 col-xs-12 mx-auto">
+        <div id="dishCardMenu" class="col-lg-6 col-md-8 col-sm-8 col-xs-12 mx-auto">
             <div id="dishCard" class="row" style="padding: 14px 55px 94px 55px">
                 <div class="cardImg col-6">
                     <img src="#" alt="dishImg">

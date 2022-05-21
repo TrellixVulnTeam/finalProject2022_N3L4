@@ -28,7 +28,7 @@ async function get_data(query, data_query) {
         if (err) {
             console.error(err.message);
         } else {
-            console.log("connect to db complete!");
+            // console.log("connect to db complete!");
         }
     });
     // let dataex = "";
@@ -43,9 +43,9 @@ async function get_data(query, data_query) {
             data_query.splice(myIndex, 1);
         }
     }
-    console.log(data_query);
+    // console.log(data_query);
 
-    console.log(`SELECT * FROM recipe IN ('${data_query.join("', '")}')`);
+    // console.log(`SELECT * FROM recipe IN ('${data_query.join("', '")}')`);
     let sql_queries = {
         all: "SELECT * FROM recipe",
         search: "SELECT * FROM recipe",
@@ -75,7 +75,7 @@ app.get('/', (req, res) => {
     get_data("all", []).then((resolve) => {
         for (i = 0; i < resolve.length; i++) {
         }
-        console.log(resolve)
+        // console.log(resolve)
         // res.send("hello")
         res.render(__dirname + '/pages/index.html', resolve);
     })
@@ -89,19 +89,19 @@ app.get('/search', (request, response) => {
         // const data = { resolve };
         for (let i = 0, l = resolve.length; i < l; i++) {
             var obj = resolve[i];
-            console.log(search, obj.name)
+            // console.log(search, obj.name)
             var similarity = stringSimilarity.compareTwoStrings(String(search == undefined ? "test" : search.toLowerCase()), obj.name.toLowerCase())
             if (similarity >= 0.2) {
-                console.log(obj.name, 'Сходство(name):', similarity)
+                // console.log(obj.name, 'Сходство(name):', similarity)
                 SearchedList.push(obj)
             }
         }
         for (let i = 0, l = resolve.length; i < l; i++) {
             var obj = resolve[i];
-            console.log(search, obj.name)
+            // console.log(search, obj.name)
             var similarity = stringSimilarity.compareTwoStrings(String(search == undefined ? "test" : search.toLowerCase()), obj.category.toLowerCase())
             if (similarity >= 0.2) {
-                console.log(obj.name, 'Сходство(name):', similarity)
+                // console.log(obj.name, 'Сходство(name):', similarity)
                 SearchedList.push(obj)
             }
         }
@@ -145,29 +145,36 @@ app.get('/bettersearch1', (request, res) => {
 })
 
 app.get("/index", (request, response) => {
+    console.log(1);
+    console.log(request);
     var items = {
         "cards":
         [{
-            "image": ".png",
             "name": "Жаркое",
+            "image": ".png",
             "tags": [{ "tagName": "asd" }, { "tagName": "dsa" }],
             "descripton": "Lorem ipsum dolor sit amet.",
             "preptime": "1 час",
             "ingredients": [{ "name": "морковь", "count": "1шт" }, { "name": "сметана", "count": "1 ст.л." }],
-            "dishId": 0
+
         },
         {
-            "image": ".png",
             "name": "Жаркое",
+            "image": ".png",
             "tags": [{ "tagName": "asd" }, { "tagName": "dsa" }],
             "descripton": "Lorem ipsum dolor sit amet.",
             "preptime": "1 час",
             "ingredients": [{ "name": "морковь", "count": "1шт" }, { "name": "сметана", "count": "1 ст.л." }],
-            "dishId": 1
+            
         }]
     };
-    response.send(items.cards[request.dishId]);
-    // response.render(__dirname + "/pages/index.html", items)
+    switch (request["requestName"]) {
+        case "dishCardImport":
+            response.send();
+            // response.send(items["cards"].find(dish => dish.name === request["dishName"]));
+        case "logInUser":
+            response.send()
+    }
 })
 
 app.listen(port, function () {

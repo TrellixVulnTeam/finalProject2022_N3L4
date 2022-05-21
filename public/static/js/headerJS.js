@@ -12,13 +12,22 @@
 // добавить закомментированные возвраты данных через res.send(result) вместо res.render(__dirname ..., result)
 
 function regMenu() {
-    console.log($("#logMenus").attr("class"));
     if ($("#logMenus").attr("class").split(" ").indexOf("hidden") != -1) {
         toggleHidden($("#logMenus"))
         $("#logMenus").click(function (e) { if ($(e.target).closest("#logCurrentMenu").length) { return } toggleHidden($("#logMenus")); $("#logMenus").off("click")})
     }
-    $("#logCurrentMenu>div").css("display", "none")
-    $(`#logCurrentMenu>#${$(this).attr("id")}`).css("display", "")
+    if ($(this).attr("id") == "dishCard"){
+        $("div#dishCardMenu").css("display", "")
+        $("div#logCurrentMenu").css("display", "none")
+        $("div#logCurrentMenu .enterButton").css("display", "none")
+    }else {
+        $("div#logCurrentMenu").css("display", "")
+        $("div#dishCardMenu").css("display", "none")
+        $("div#logCurrentMenu>div").css("display", "none")
+        $(`div#logCurrentMenu>#${$(this).attr("id")}`).css("display", "")
+        $(".enterButton").attr("shownUser", "hidden")
+        $(`div#${$(this).attr("id")} .enterButton`).attr("shownUser", $(this).attr("id"))
+    }
 }
 
 function toggleHidden(Obj) {
