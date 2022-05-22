@@ -7,6 +7,15 @@
     src: url(/fonts/Inter-Regular.ttf);
 }
 
+@font-face {
+    font-family: "Montserrat";
+    src: url(/fonts/Montserrat-Regular.ttf);
+}
+
+.EZSearchResults p {
+    margin: 0;
+}
+
 form {
     display: inline-block;
 }
@@ -136,4 +145,73 @@ div#signUpE, div#signUpP {
     text-align: right;
     width: 366px;
     margin-top: 20px !important;
+}
+
+.topDishTag {
+    background: rgba(254, 184, 154, 0.59);
+    height: 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 10%;
+}
+
+.topDishText {
+    position: relative;
+    margin-top: 5px;
+}
+
+.topDishTags {
+    margin-bottom: 5px;
+}
+
+.topDishGoAway, .dishShowRecipe {
+    position: absolute;
+    background-color: #FEB89A;
+    bottom: 0;
+    right: 20px;
+    width: 108.82px;
+    height: 26px;
+    font-size: 14px;
+    line-height: 67%;
+    border-radius: 33px;
+}
+#profileMiniMenu  {
+    background-color: white;
+    z-index: 10;
+    padding: 20px 10px;
+    position: absolute;
+    top: 100px;
+    left: -57px;
+}
+
+#logMenus {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 99;
+}
+
+.topDishImgDiv  {
+    overflow: hidden;
+    border-radius: 2px;
+    height: 279px;
+}
+
+.topDishImg  {
+    position: relative;
+    width: 100%;
+    height: auto;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.dishImg {
+    width: 100%;
+}
+
+.cardText li {
+    list-style-type: none;
 }

@@ -1,16 +1,20 @@
-
 main>div {
     position: relative;
+    margin-top: 80px;
 }
 
 .topDishes {
-    margin-top: 128px;
-    margin-bottom: 200px;
+    margin-bottom: 60px;
 }
 
 .topDishesCards {
     position: relative;
-    height: 410px;
+    animation-duration: 2s;
+    transform: scaleY(1)
+}
+
+.nothiddenCard {
+    margin-top: 50px;
 }
 
 .topDishesText {
@@ -25,79 +29,38 @@ main>div {
     right: 3%;
 }
 
-.topDishesCards::before, .topDishesCards::after {
-    position: absolute;
-    content: '';
+.mostPopularDishesText {
+    font-size: 42px;
+    font-family: Bad Script;
+    margin-bottom: 25px;
+}
+
+.mostPopularDishesCards .topDishImgDiv {
+    height: 353px;
+}
+
+.mostPopularDishesCards .topDishDesc  {
+    font-size: 14px;
+}
+
+.arrowLT  {
+    margin-top: 38px;
     width: 42px;
     height: 63px;
-    top: 50%;
-    margin-top: -31.5px;
+    background-image: url(/images/arrow.png);
+    transform: rotate(90deg);
 }
 
-.topDishesCards::before {
-    background-image: url(/images/leftArrow.png);
-    left: -72px;
+.EZSearchText {
+    font-size: 42px;
+    font-family: Bad Script;
+    line-height: 80px;
 }
 
-.topDishesCards::after {
-    background-image: url(/images/rightArrow.png);
-    right: -72px;
-}
-.topDishTag {
-    background: rgba(254, 184, 154, 0.59);
-    height: 18px;
-    border-radius: 8px;
-    font-size: 14px;
-    line-height: 10%;
-}
-
-.topDishText {
-    position: relative;
-}
-
-.topDishTags {
-    margin-bottom: 5px;
-}
-
-.topDishGoAway, .dishShowRecipe {
-    position: absolute;
-    background-color: #FEB89A;
-    bottom: 0;
-    right: 0;
-    width: 108.82px;
-    height: 26px;
-    font-size: 14px;
-    line-height: 67%;
-}
-
-
-.topDishDesc {
-    width: 198px;
-}
-
-#profileMiniMenu  {
-    background-color: white;
-    z-index: 10;
-    padding: 20px 10px;
-    position: absolute;
-    top: 100px;
-    left: -57px;
-}
-
-#logMenus {
-    height: 100vh;
-    width: 100vw;
-    background-color: rgba(0, 0, 0, 0.4);
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 99;
-}
-
-.dishImg {
-    width: 100%;
-}
-
-.cardText li {
-    list-style-type: none;
+.ingrTypesButton {
+    font-family: Montserrat;
+    padding: 8px 40px;
+    font-size: 16px;
+    border-radius: 18px;
+    background-color: #F2CEBE;
 }

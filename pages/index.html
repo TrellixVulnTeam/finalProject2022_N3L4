@@ -206,7 +206,7 @@
     <header>{% include "templates/header.html" %}</header>
 
     <main>
-        <div class="container mainContainer top-" style="padding-top: 176px;">
+        <div class="container mainContainer">
             <div class="row">
                 <div class="col-lg-6 mainContainerText" style="padding-top: 124px;">
                     <div class="mainTextContainer" style="font-family: Bad Script">
@@ -227,10 +227,68 @@
                 <p style="font-size: 42px;"><i>10 новинок этого сезона</i></p>
                 <button class="btn">Увидеть все</button>
             </div>
-            <div class="topDishesCards row gx-4">
-                {% for item in cards %}
-                {% include "templates/topDishesCard.html" %}
+            <div class="topDishesCards row gx-4 gy-4 justify-content-center">
+                <!-- {% for item in cards %}
+                <div class="col-3">{% include "templates/topDishesCard.html" %}</div>
+                {% endfor %} -->
+                <div class="col-3">{% include "templates/topDishesCard.html" %}</div>
+                <div class="col-3">{% include "templates/topDishesCard.html" %}</div>
+                <div class="col-3">{% include "templates/topDishesCard.html" %}</div>
+                <div class="col-3">{% include "templates/topDishesCard.html" %}</div>
+                <div class="col-3">{% include "templates/topDishesCard.html" %}</div>
+                <div class="col-3">{% include "templates/topDishesCard.html" %}</div>
+                <div class="col-3">{% include "templates/topDishesCard.html" %}</div>
+                <div class="col-3">{% include "templates/topDishesCard.html" %}</div>
+                <div class="arrowLT col-auto"></div>
+            </div>
+        </div>
+
+        <div class="container mostPopularDishes">
+            <div class="mostPopularDishesText">Самые популярные блюда</div>
+            <div class="mostPopularDishesCards row">
+                <!-- {% for item in cards %}
+                <div class="col-7">{% include "templates/topDishesCard.html" %}</div>
                 {% endfor %}
+                {% for item in cards %}
+                <div class="col-5">{% include "templates/topDishesCard.html" %}</div>
+                {% endfor %} -->
+                <div class="col-7">{% include "templates/topDishesCard.html" %}</div>
+                <div class="col-5">{% include "templates/topDishesCard.html" %}</div>
+            </div>
+        </div>
+
+        <div class="EZSearch container">
+            <div class="EZSearchText">
+                <p>Поиск по продуктам<br>Разделы <img src="/images/ArrowSection.svg" alt=""></p>
+                <div class="TypesOfIngridients">
+                    <form action="">  <!-- доделать -->
+                        {% for ingrtype in ingridientstypes %}
+                        <button class="btn ingrTypesButton">{{ ingrtype.name }}</button>
+                        {% endfor %}
+                        <button class="btn ingrTypesButton">Овощи</button>
+                        <button class="btn ingrTypesButton">Фрукты</button>
+                        <button class="btn ingrTypesButton">Мясная продукция</button>
+                        <button class="btn ingrTypesButton">Фрукты</button>
+                        <button class="btn ingrTypesButton">Фрукты</button>
+                        <button class="btn ingrTypesButton">Фрукты</button>
+                        <button class="btn ingrTypesButton">Фрукты</button>
+                        <button class="btn ingrTypesButton">Мясная продукция</button>
+                        <button class="btn ingrTypesButton">Фрукты</button>
+                        <button class="btn ingrTypesButton">Фрукты</button>
+                        <button class="btn ingrTypesButton">Мясная продукция</button>
+                        <button class="btn ingrTypesButton">Мясная продукция</button>
+                    </form>
+                </div>
+                <div class="EZSearchResults row  gx-3 gy-5" style="margin-top: 8px;">
+                    <div class="col-2">{% include "templates/EZSearchRadioButton.html" %}</div>
+                    <div class="col-2">{% include "templates/EZSearchRadioButton.html" %}</div>
+                    <div class="col-2">{% include "templates/EZSearchRadioButton.html" %}</div>
+                    <div class="col-2">{% include "templates/EZSearchRadioButton.html" %}</div>
+                    <div class="col-2">{% include "templates/EZSearchRadioButton.html" %}</div>
+                    <div class="col-2">{% include "templates/EZSearchRadioButton.html" %}</div>
+                    <div class="col-2">{% include "templates/EZSearchRadioButton.html" %}</div>
+                    <div class="col-2">{% include "templates/EZSearchRadioButton.html" %}</div>
+                </div>
             </div>
         </div>
     </main>
@@ -240,4 +298,5 @@
 
 </html>
 <script src="/js/headerJS.js"></script>
+<script src="/js/mainPageJS.js"></script>
 <script src="/js/requests.js"></script>
