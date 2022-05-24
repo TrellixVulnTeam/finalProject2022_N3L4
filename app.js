@@ -19,10 +19,10 @@ const redisClient = redis.createClient({
 });
 
 app.use(session({
-    store: new RedisStore({client: redisClient}),
+    store: new RedisStore({ client: redisClient }),
     secret: 'mySecret',
     saveUninitialized: false,
-    resave: false, 
+    resave: false,
     cookie: {
         secure: false, // if true: only transmit cookie over https
         httpOnly: true, // if true: prevents client side JS from reading the cookie
@@ -30,7 +30,7 @@ app.use(session({
         sameSite: 'lax' // make sure sameSite is not none
     }
 }));
-console.log(redis['host'],redis['port'])
+console.log(redis['host'], redis['port'])
 //</redis>
 app.use(express.static(__dirname + '/public/static'));
 
@@ -69,7 +69,12 @@ async function get_data(query, data_query) {
     let sql_queries = {
         all: "SELECT * FROM recipe",
         search: "SELECT * FROM recipe",
-        bSearchCheclBx: `SELECT * FROM recipe WHERE category IN('${data_query.join("', '")}')`//SELECT * FROM recipe WHERE category IN('lunch', 'supper', 'lunch')//`SELECT * FROM recipe WHERE category IN('${data_query.join("', '")}')`
+        bSearchCheclBx: `SELECT * FROM recipe WHERE category IN('${data_query.join("', '")}')`,//SELECT * FROM recipe WHERE category IN('lunch', 'supper', 'lunch')//`SELECT * FROM recipe WHERE category IN('${data_query.join("', '")}')`
+        index:`SELECT * FROM recipe
+        INNER  JOIN SeasonTop
+        INNER  JOIN ingridients
+        `,
+        recipe:`SELECT * FROM recipe WHERE ? = id`
     }
     let sql = sql_queries[query];
     console.log(sql_queries.bSearchCheclBx);
@@ -92,12 +97,18 @@ async function get_data(query, data_query) {
 
 app.get('/', (req, res) => {
     l = []
-    get_data("all", []).then((resolve) => {
-        for (i = 0; i < resolve.length; i++) {
+    get_data("index", []).then((resolve) => {
+        // console.log({resolve})
+        // res.send({resolve})
+        for(i = 0, l = resolve.length; i < l; i++){
+            let unparsedtag = resolve[i]["tag"]
+            let parsedtags= unparsedtag.split(",")
+            
+
+            // console.log(parsedtags)
+            // console.log(resolve[i]["tag"]);
         }
-        // console.log(resolve)
-        // res.send("hello")
-        res.render(__dirname + '/pages/index.html', resolve);
+        res.render(__dirname + '/pages/index.html', {resolve});
     })
 });
 
@@ -133,27 +144,7 @@ app.get('/bettersearch', function (request, response) {
         response.render(__dirname + '/pages/bsearch.html', resolve);
     })
 })
-//     let categorybox = request.query.categorycheckbox;
-//     let categoryradio = request.query.category;
-//     // console.log(categoryradio, categorybox)
-//     // var list = []
-//     // let composition = request.body.composition;
-//     // let type = request.body.type;
-//     
 
-//         // for (let i = 0, l = resolve.length; i < l; i++) {
-//         //     var obj = resolve[i];
-//         //     var similarity = stringSimilarity.compareTwoStrings(String(categorybox), obj.category)
-//         //     if (similarity >= 0.2) {
-//         //         // console.log(obj.name, 'Сходство(name):', similarity)
-//         //         list.push(obj)
-//         //     }
-//         // }
-//         response.render(__dirname + '/pages/bsearch.html', resolve);
-//     
-
-
-// })
 app.get('/bettersearch1', (request, res) => {
     let q1 = String(request.query.q1);
     let q2 = String(request.query.q2);
@@ -164,34 +155,41 @@ app.get('/bettersearch1', (request, res) => {
     })
 })
 
+app.get('/recipe', (req, res) => {
+    let r= req.query.r;
+    console.log(r)
+    get_data("recipe", [r]).then((resolve) => {
+        res.render(__dirname + '/templates/topDishesCard.html', {resolve});
+    })
+})
 app.get("/index", (request, response) => {
     console.log(1);
     console.log(request);
     var items = {
         "cards":
-        [{
-            "name": "Жаркое",
-            "image": ".png",
-            "tags": [{ "tagName": "asd" }, { "tagName": "dsa" }],
-            "descripton": "Lorem ipsum dolor sit amet.",
-            "preptime": "1 час",
-            "ingredients": [{ "name": "морковь", "count": "1шт" }, { "name": "сметана", "count": "1 ст.л." }],
+            [{
+                "name": "Жаркое",
+                "image": ".png",
+                "tags": [{ "tagName": "asd" }, { "tagName": "dsa" }],
+                "descripton": "Lorem ipsum dolor sit amet.",
+                "preptime": "1 час",
+                "ingredients": [{ "name": "морковь", "count": "1шт" }, { "name": "сметана", "count": "1 ст.л." }],
 
-        },
-        {
-            "name": "Жаркое",
-            "image": ".png",
-            "tags": [{ "tagName": "asd" }, { "tagName": "dsa" }],
-            "descripton": "Lorem ipsum dolor sit amet.",
-            "preptime": "1 час",
-            "ingredients": [{ "name": "морковь", "count": "1шт" }, { "name": "сметана", "count": "1 ст.л." }],
-            
-        }]
+            },
+            {
+                "name": "Жаркое",
+                "image": ".png",
+                "tags": [{ "tagName": "asd" }, { "tagName": "dsa" }],
+                "descripton": "Lorem ipsum dolor sit amet.",
+                "preptime": "1 час",
+                "ingredients": [{ "name": "морковь", "count": "1шт" }, { "name": "сметана", "count": "1 ст.л." }],
+
+            }]
     };
     switch (request["requestName"]) {
         case "dishCardImport":
             response.send();
-            // response.send(items["cards"].find(dish => dish.name === request["dishName"]));
+        // response.send(items["cards"].find(dish => dish.name === request["dishName"]));
         case "logInUser":
             response.send()
     }
