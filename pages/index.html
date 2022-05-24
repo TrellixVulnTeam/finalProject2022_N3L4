@@ -20,10 +20,15 @@
 </head>
 
 <body>
+<header>{% include "templates/header.html" %}</header>
+
     <div id="logMenus" class="row align-items-center hidden">
         <div id="logCurrentMenu" class="col-lg-4 col-md-6 col-sm-8 col-xs-12 mx-auto">
             <div id="signInE">
-                <div class="d-block row align-items-center"><div class="col-1 mx-auto"><img src="/images/Logo.svg" alt="Logo" style="transform: translateX(-50%);"></div></div>
+                <div class="d-block row align-items-center">
+                    <div class="col-1 mx-auto"><img src="/images/Logo.svg" alt="Logo"
+                            style="transform: translateX(-50%);"></div>
+                </div>
                 <div class="d-block logMenusText">Вход</div>
                 <form action="" class="container-fluid">
                     <input type="text" placeholder="Телефон">
@@ -31,7 +36,6 @@
                     <input type="submit">
                 </form>
             </div>
-<<<<<<< HEAD
             <div id="signInP">
                 <p class="logMenuH">Войти в аккаунт</p>
                 <form action="">
@@ -50,16 +54,12 @@
                         </div>
                     </div>
                 </form>
-=======
-            <div id="signInP" class="row">
-                
->>>>>>> 670b69e625df1bf70f7d062fa73652b597256634
             </div>
             <div id="passwordResetEC" class="row">
-                
+
             </div>
             <div id="passwordResetEP" class="row">
-                
+
             </div>
         </div>
         <div id="dishCardMenu" class="col-lg-6 col-md-8 col-sm-8 col-xs-12 mx-auto">
@@ -80,7 +80,6 @@
 
     </div>
 
-    <header>{% include "templates/header.html" %}</header>
 
     <main>
         <div class="container mainContainer">
@@ -112,27 +111,10 @@
             </div>
         </div>
 
-        <div class="container mostPopularDishes">
-            <div class="mostPopularDishesText">Самые популярные блюда</div>
-            <div class="mostPopularDishesCards row">
-                <!-- {% for item in cards %}
-                <div class="col-7">{% include "templates/topDishesCard.html" %}</div>
-                {% endfor %}
-                {% for item in cards %}
-                <div class="col-5">{% include "templates/topDishesCard.html" %}</div>
-                {% endfor %} -->
-                <!-- <div class="col-7">{% include "templates/topDishesCard.html" %}</div>
-                <div class="col-5">{% include "templates/topDishesCard.html" %}</div> -->
-            </div>
-        </div>
-
         <div class="EZSearch container">
             <div class="EZSearchText">
                 <p>Поиск по продуктам<br>Разделы <img src="/images/ArrowSection.svg" alt=""></p>
                 <div class="typesOfIngridients">
-                    {% for ingrtype in ingridientstypes %}
-                    <button class="btn ingrTypesButton">{{ ingrtype.name }}</button>
-                    {% endfor %}
                     <button class="btn ingrTypesButton">Овощи</button>
                     <button class="btn ingrTypesButton">Фрукты</button>
                     <button class="btn ingrTypesButton">Мясная продукция</button>
@@ -155,8 +137,7 @@
             </div>
         </div>
     </main>
-
-    <!-- <footer>{% include "templates/footer.html" %}</footer> -->
+    <footer>{% include "templates/footer.html" %}</footer>
 </body>
 
 </html>
