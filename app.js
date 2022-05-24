@@ -144,6 +144,11 @@ app.get('/bettersearch', function (request, response) {
         response.render(__dirname + '/pages/bsearch.html', resolve);
     })
 })
+app.get('/registration', function (request, response) {
+    get_data("all", []).then((resolve) => {
+        response.render(__dirname + '/pages/registration.html', resolve);
+    })
+})
 
 app.get('/bettersearch1', (request, res) => {
     let q1 = String(request.query.q1);
@@ -155,55 +160,12 @@ app.get('/bettersearch1', (request, res) => {
     })
 })
 
-<<<<<<< HEAD
-app.get("/registration", (request, response) => {
-    get_data("all", []).then((resolve) => {
-        response.render(__dirname + '/pages/registration.html', resolve);
-    })
-})
-app.get("/index", (request, response) => {
-
-    var items = {
-        "cards":
-        [{
-            "name": "Жаркое",
-            "image": ".png",
-            "tags": [{ "tagName": "asd" }, { "tagName": "dsa" }],
-            "descripton": "Lorem ipsum dolor sit amet.",
-            "preptime": "1 час",
-            "ingredients": [{ "name": "морковь", "count": "1шт" }, { "name": "сметана", "count": "1 ст.л." }],
-
-        },
-        {
-            "name": "Жаркое",
-            "image": ".png",
-            "tags": [{ "tagName": "asd" }, { "tagName": "dsa" }],
-            "descripton": "Lorem ipsum dolor sit amet.",
-            "preptime": "1 час",
-            "ingredients": [{ "name": "морковь", "count": "1шт" }, { "name": "сметана", "count": "1 ст.л." }],
-            
-        }]
-    };
-    switch (request.query.requestName) {
-        case "dishCardImport":
-            response.send("1");
-            break;
-            // response.send(items["cards"].find(dish => dish.name === request["dishName"]));
-        case "logInUser":
-            response.send("2");
-            break;
-        case "findIngrOfType":
-            response.send("3")
-            break
-    }
-=======
 app.get('/recipe', (req, res) => {
     let r= req.query.r;
     console.log(r)
     get_data("recipe", [r]).then((resolve) => {
         res.render(__dirname + '/templates/topDishesCard.html', {resolve});
     })
->>>>>>> 5b899faa32545b2eea33c286250b7ba5e23d93f9
 })
 // app.get("/index", (request, response) => {
 
