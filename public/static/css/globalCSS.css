@@ -25,6 +25,10 @@ a {
     color: black;
 }
 
+.headerA { 
+    margin: 0 21px;
+}
+
 .hidden {
     visibility: hidden;
     opacity: 0;

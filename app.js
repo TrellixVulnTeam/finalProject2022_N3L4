@@ -191,9 +191,15 @@ app.get("/index", (request, response) => {
     switch (request["requestName"]) {
         case "dishCardImport":
             response.send();
+            break;
             // response.send(items["cards"].find(dish => dish.name === request["dishName"]));
         case "logInUser":
-            response.send()
+            response.send();
+            break;
+        case "findIngrOfType":
+            console.log(1);
+            response.send("1")
+            break
     }
 })
 

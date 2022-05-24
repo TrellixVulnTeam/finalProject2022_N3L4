@@ -260,24 +260,22 @@
         <div class="EZSearch container">
             <div class="EZSearchText">
                 <p>Поиск по продуктам<br>Разделы <img src="/images/ArrowSection.svg" alt=""></p>
-                <div class="TypesOfIngridients">
-                    <form action="">  <!-- доделать -->
-                        {% for ingrtype in ingridientstypes %}
-                        <button class="btn ingrTypesButton">{{ ingrtype.name }}</button>
-                        {% endfor %}
-                        <button class="btn ingrTypesButton">Овощи</button>
-                        <button class="btn ingrTypesButton">Фрукты</button>
-                        <button class="btn ingrTypesButton">Мясная продукция</button>
-                        <button class="btn ingrTypesButton">Фрукты</button>
-                        <button class="btn ingrTypesButton">Фрукты</button>
-                        <button class="btn ingrTypesButton">Фрукты</button>
-                        <button class="btn ingrTypesButton">Фрукты</button>
-                        <button class="btn ingrTypesButton">Мясная продукция</button>
-                        <button class="btn ingrTypesButton">Фрукты</button>
-                        <button class="btn ingrTypesButton">Фрукты</button>
-                        <button class="btn ingrTypesButton">Мясная продукция</button>
-                        <button class="btn ingrTypesButton">Мясная продукция</button>
-                    </form>
+                <div class="typesOfIngridients">
+                    {% for ingrtype in ingridientstypes %}
+                    <button class="btn ingrTypesButton">{{ ingrtype.name }}</button>
+                    {% endfor %}
+                    <button class="btn ingrTypesButton">Овощи</button>
+                    <button class="btn ingrTypesButton">Фрукты</button>
+                    <button class="btn ingrTypesButton">Мясная продукция</button>
+                    <button class="btn ingrTypesButton">Фрукты</button>
+                    <button class="btn ingrTypesButton">Фрукты</button>
+                    <button class="btn ingrTypesButton">Фрукты</button>
+                    <button class="btn ingrTypesButton">Фрукты</button>
+                    <button class="btn ingrTypesButton">Мясная продукция</button>
+                    <button class="btn ingrTypesButton">Фрукты</button>
+                    <button class="btn ingrTypesButton">Фрукты</button>
+                    <button class="btn ingrTypesButton">Мясная продукция</button>
+                    <button class="btn ingrTypesButton">Мясная продукция</button>
                 </div>
                 <div class="EZSearchResults row  gx-3 gy-5" style="margin-top: 8px;">
                     <div class="col-2">{% include "templates/EZSearchRadioButton.html" %}</div>

@@ -14,7 +14,6 @@ $("").click(function () {
 })
 
 $(".enterButton").click(function () {
-    console.log(1);
     axios.get('/index', {
         params: {
             "requestName": "logInUser",
@@ -25,6 +24,22 @@ $(".enterButton").click(function () {
             console.log(1);
         })
         .catch(function (error) {
+            console.log(error);
+        })
+})
+
+
+$(".typesOfIngridients>button").click( function () {
+    axios.get("/", {
+        params: {
+            "requestName": "findIngrOfType",
+            "ingrType": $(this).val()
+        }
+    })
+        .then(function (response)  {
+            console.log(response);
+        })
+        .catch(function  (error) {
             console.log(error);
         })
 })
