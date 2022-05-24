@@ -53,10 +53,12 @@ a {
 #logCurrentMenu>div {
     padding: 52px 89px 0 89px;
     height: 704px;
+    position: relative;
 }
 
-#logCurrentMenu>div>div:nth-last-child(2) {
-    margin-top: 20px;
+#passwordResetEP {
+    padding: 52px 89px 0 89px;
+    position: relative;
 }
 
 #logCurrentMenu>div>div:nth-last-child(2) {
@@ -68,6 +70,7 @@ a {
     font-size: 48px;
     text-align: center;
     line-height: 42px;
+    margin-top: 20px;
 }
 
 .inputNS:last-child {
@@ -107,7 +110,7 @@ a {
     margin-bottom: 5px;
 }
 
-.topDishGoAway, .dishShowRecipe {
+.topDishGoAway {
     position: absolute;
     background-color: #FEB89A;
     bottom: 0;
@@ -128,13 +131,14 @@ a {
 }
 
 #logMenus {
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
     position: fixed;
     top: 0;
     right: 0;
     z-index: 99;
+    --bs-gutter-x: 0;
+    width: 100%;
 }
 
 .topDishImgDiv  {
@@ -151,10 +155,110 @@ a {
     transform: translateY(-50%);
 }
 
+#logCurrentMenu form input {
+    border-radius: 12px;
+    border: #C4C4C4 1px solid;
+    height: 74px;
+    margin: 25px 0 0 0;
+    width: 100%;
+    text-indent: 6.4%;
+}
+
+#logCurrentMenu form input:first-child {
+    margin-top: 45px;
+}
+
+#logCurrentMenu form button:last-child {
+    margin: 40px 0 11px 0;
+    height: 74px;
+    width: 100%;
+    background-color: #FEB89A;
+    border-radius: 33px;
+}
+
+#passwordResetEC>.btn {
+    margin: 40px 0 11px 0;
+    height: 74px;
+    width: 100%;
+    background-color: #FEB89A;
+    border-radius: 33px;
+}
+
+.miniTextGoAway, #signInE .miniTextGoAway:nth-last-child(2) {
+    padding: 1px;
+    margin: 0;
+    line-height: 16px;
+    font-size: 16px;
+    text-decoration: underline;
+    background-color: white;
+    border-radius: 0;
+    width: fit-content;
+    float: right;
+}
+
+#signInE .miniTextGoAway {
+    padding: 1px;
+    margin: 0;
+    line-height: 16px;
+    font-size: 16px;
+    background-color: white;
+    border-radius: 0;
+    text-decoration: none;
+    width: fit-content;
+    float: left;
+}
+
+.extraInfo {
+    margin-top: 106px;
+    line-height: 16px;
+    font-size: 16px;
+}
+
+.extraInfo div {
+    padding: 0;
+}
+
+#passwordResetEP .extraInfo  {
+    margin-top: 30px;
+}
+
+.extraInfo div {
+    display: inline-block;
+    color: #737373;
+}
+
+.extraInfo a {
+    white-space: nowrap;
+    text-align: end;
+    color: #737373;
+}
+
+.sendCodeAgain {
+    position: relative;
+    top: -126px;
+    font-size: 16px;
+    color: #979797;
+    text-decoration: underline;
+    background-color: white;
+    border: 0;
+    line-height: 16px;
+    height: 16px;
+}
+
 .dishImg {
     width: 100%;
 }
 
 .cardText li {
     list-style-type: none;
+}
+
+#dishCardMenu {
+    background-color: white;
+}
+
+.dishShowRecipe {
+    font-size: 18px;
+    width: fit-content;
+    bottom: -20px;
 }

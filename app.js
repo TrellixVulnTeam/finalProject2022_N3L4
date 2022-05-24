@@ -164,6 +164,11 @@ app.get('/bettersearch1', (request, res) => {
     })
 })
 
+app.get("/registration", (request, response) => {
+    get_data("all", []).then((resolve) => {
+        response.render(__dirname + '/pages/registration.html', resolve);
+    })
+})
 app.get("/index", (request, response) => {
 
     var items = {

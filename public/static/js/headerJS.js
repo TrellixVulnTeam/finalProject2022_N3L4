@@ -35,7 +35,7 @@ function toggleHidden(Obj) {
     Obj.toggleClass("hidden shown")
 }
 
-$("button#signInE, button#signUpE, button#signUpP, p#passwordResetEC, p#signInP").click(regMenu)
+$("button#signInE, button#passwordResetEC, button#signInP").click(regMenu)
 
 $("#searchForm").click( function () {
     if ($(this).children("button").attr("class") != "btn btn-outline-success"){
