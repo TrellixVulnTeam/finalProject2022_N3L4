@@ -72,3 +72,7 @@ main>div {
 .typesOfIngridients  {
     line-height: 60px;
 }
+
+.divTypesOfIngridients input:checked + button {
+    background-color: white;
+}

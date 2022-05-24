@@ -29,17 +29,17 @@ $(".enterButton").click(function () {
 })
 
 
-$(".typesOfIngridients>button").click( function () {
-    axios.get("/", {
+$(".typesOfIngridients>button").click(function () {
+    axios.get("/index", {
         params: {
             "requestName": "findIngrOfType",
             "ingrType": $(this).val()
         }
     })
-        .then(function (response)  {
-            console.log(response);
+        .then(function (response) {
+            // console.log(response);
         })
-        .catch(function  (error) {
+        .catch(function (error) {
             console.log(error);
         })
 })

@@ -165,8 +165,7 @@ app.get('/bettersearch1', (request, res) => {
 })
 
 app.get("/index", (request, response) => {
-    console.log(1);
-    console.log(request);
+
     var items = {
         "cards":
         [{
@@ -188,17 +187,16 @@ app.get("/index", (request, response) => {
             
         }]
     };
-    switch (request["requestName"]) {
+    switch (request.query.requestName) {
         case "dishCardImport":
-            response.send();
+            response.send("1");
             break;
             // response.send(items["cards"].find(dish => dish.name === request["dishName"]));
         case "logInUser":
-            response.send();
+            response.send("2");
             break;
         case "findIngrOfType":
-            console.log(1);
-            response.send("1")
+            response.send("3")
             break
     }
 })
