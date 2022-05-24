@@ -23,25 +23,15 @@
     <div id="logMenus" class="row align-items-center hidden">
         <div id="logCurrentMenu" class="col-lg-4 col-md-6 col-sm-8 col-xs-12 mx-auto">
             <div id="signInE">
-                <p class="logMenuH">Войти в аккаунт</p>
-                <form action="">
-                    <div class="inputHolderR inputHolder">
-                        <p class="logMenuP">Почта</p>
-                        <input class="logMenuInput" type="text" name="userEMailSIE">
-                    </div>
-                    <div class="inputHolderR inputHolderL">
-                        <p class="logMenuP">Пароль</p>
-                        <input class="logMenuInput" type="text" name="userPasswordSIE">
-                    </div>
-                    <div class="row">
-                        <div class="col-auto mx-auto">
-                            <button class="loMenuBtn enterButton">Войти</button>
-                            <p class="logMenusMiniText" id="signInP">Войти по номеру телефона</a>
-                            <p class="logMenusMiniText" id="passwordResetEC">Забыли пароль?</p>
-                        </div>
-                    </div>
+                <div class="d-block row align-items-center"><div class="col-1 mx-auto"><img src="/images/Logo.svg" alt="Logo" style="transform: translateX(-50%);"></div></div>
+                <div class="d-block logMenusText">Вход</div>
+                <form action="" class="container-fluid">
+                    <input type="text" placeholder="Телефон">
+                    <input type="password" placeholder="Код">
+                    <input type="submit">
                 </form>
             </div>
+<<<<<<< HEAD
             <div id="signInP">
                 <p class="logMenuH">Войти в аккаунт</p>
                 <form action="">
@@ -60,129 +50,16 @@
                         </div>
                     </div>
                 </form>
+=======
+            <div id="signInP" class="row">
+                
+>>>>>>> 670b69e625df1bf70f7d062fa73652b597256634
             </div>
-            <div id="signUpE" class="row">
-                <div class="col-auto">
-                    <p class="logMenuH">Создать аккаунт</p>
-                    <form action="">
-                        <div class="row gx-0">
-                            <div class="col-6 inputNS">
-                                <div class="inputHolder">
-                                    <p class="logMenuP">Имя</p>
-                                    <input class="logMenuInput" type="text" name="userNameSUE" style="width: 165px">
-                                </div>
-                            </div>
-                            <div class="col-6 inputNS">
-                                <div class="inputHolder">
-                                    <p class="logMenuP">Фамилия</p>
-                                    <input class="logMenuInput" type="text" name="userSurnameSUE" style="width: 165px">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="inputHolderR inputHolder">
-                            <p class="logMenuP">Почта</p>
-                            <input class="logMenuInput" type="text" name="userEmailSUE">
-                        </div>
-                        <div class="inputHolderR inputHolder">
-                            <p class="logMenuP">Пароль</p>
-                            <input class="logMenuInput" type="text" name="userPasswordSUE">
-                        </div>
-                        <div class="inputHolderR inputHolderL">
-                            <p class="logMenuP">Пароль ещё раз</p>
-                            <input class="logMenuInput" type="text" name="userPasswordAgainSUE">
-                        </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <button class="loMenuBtn" style="width: 198px;" id="signUpP">Другой способ</button>
-                            </div>
-                            <div class="col-6">
-                                <button class="loMenuBtn enterButton" style="width: 198px;">Зарегистрироваться</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="col" style="margin-left: 111px;">
-                    <img src="" alt="123">
-                    <p class="imgDesc">какой-нибудь текст<br>под фото блюда</p>
-                </div>
+            <div id="passwordResetEC" class="row">
+                
             </div>
-            <div id="signUpP" class="row">
-                <div class="col-auto">
-                    <p class="logMenuH">Создать аккаунт</p>
-                    <form action="">
-                        <div class="row gx-0">
-                            <div class="col-6 inputNS">
-                                <div class="inputHolder">
-                                    <p class="logMenuP">Имя</p>
-                                    <input class="logMenuInput" type="text" name="userNameSUP" style="width: 165px">
-                                </div>
-                            </div>
-                            <div class="col-6 inputNS">
-                                <div class="inputHolder">
-                                    <p class="logMenuP">Фамилия</p>
-                                    <input class="logMenuInput" type="text" name="userSurnameSUP" style="width: 165px">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="inputHolderR inputHolder">
-                            <p class="logMenuP">Номер телефона</p>
-                            <input class="logMenuInput" type="text" name="userPhoneNumberSUP">
-                        </div>
-                        <div class="inputHolderR inputHolderL">
-                            <p class="logMenuP">Код</p>
-                            <input class="logMenuInput" type="text" name="useTypedCodeSUP">
-                        </div>
-                        <div class="row">
-                            <div class="col-6 hidden">
-                                <button class="loMenuBtn" style="width: 198px;">Повторно отправить код</button>
-                            </div>
-                            <div class="col-6">
-                                <button class="loMenuBtn enterButton" style="width: 198px;">Зарегистрироваться</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="col" style="margin-left: 111px;">
-                    <img src="" alt="123">
-                    <p class="imgDesc">какой-нибудь текст<br>под фото блюда</p>
-                </div>
-            </div>
-            <div id="passwordResetEC">
-                <p class="logMenuH">Сбросить пароль</p>
-                <form action="">
-                    <div class="inputHolderR inputHolder">
-                        <p class="logMenuP">Почта</p>
-                        <input class="logMenuInput" type="text" name="userEMailPRC">
-                    </div>
-                    <div class="inputHolderR inputHolderL">
-                        <p class="logMenuP">Код</p>
-                        <input class="logMenuInput" type="text" name="userTypedCodedPRC">
-                    </div>
-                    <div class="row">
-                        <div class="col-auto mx-auto">
-                            <button class="loMenuBtn">Отправить код</button>
-                            <p class="logMenusMiniText">Отправить код повторно</p>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div id="passwordResetEP">
-                <p class="logMenuH">Сбросить пароль</p>
-                <form action="">
-                    <div class="inputHolderR inputHolder">
-                        <p class="logMenuP">Пароль</p>
-                        <input class="logMenuInput" type="text" name="userTypedCodedPRNP">
-                    </div>
-                    <div class="inputHolderR inputHolderL">
-                        <p class="logMenuP">Пароль ещё раз</p>
-                        <input class="logMenuInput" type="text" name="userTypedCodedPRNPA">
-                    </div>
-                    <div class="row">
-                        <div class="col-auto mx-auto">
-                            <button class="loMenuBtn">Восстановить пароль</button>
-                        </div>
-                    </div>
-                </form>
+            <div id="passwordResetEP" class="row">
+                
             </div>
         </div>
         <div id="dishCardMenu" class="col-lg-6 col-md-8 col-sm-8 col-xs-12 mx-auto">
@@ -252,18 +129,22 @@
         <div class="EZSearch container">
             <div class="EZSearchText">
                 <p>Поиск по продуктам<br>Разделы <img src="/images/ArrowSection.svg" alt=""></p>
-                <div class="TypesOfIngridients">
-                    <form action="">
-                        <!-- доделать // Тут нужно сделать фильтры без шаблонрзации. она тут не нужна т.к. фильтрация будет по определенным нами типа продуктов-->
-                        <button class="btn ingrTypesButton">Овощи</button>
-                        <button class="btn ingrTypesButton">Фрукты</button>
-                        <button class="btn ingrTypesButton">Исскуственная мясная продукция</button>
-                        <button class="btn ingrTypesButton">Фрукты</button>
-                        <button class="btn ingrTypesButton">Мясная продукция</button>
-                        <button class="btn ingrTypesButton">Фрукты</button>
-                        <button class="btn ingrTypesButton">Мясная продукция</button>
-                        <button class="btn ingrTypesButton">БЗМЖ</button>
-                    </form>
+                <div class="typesOfIngridients">
+                    {% for ingrtype in ingridientstypes %}
+                    <button class="btn ingrTypesButton">{{ ingrtype.name }}</button>
+                    {% endfor %}
+                    <button class="btn ingrTypesButton">Овощи</button>
+                    <button class="btn ingrTypesButton">Фрукты</button>
+                    <button class="btn ingrTypesButton">Мясная продукция</button>
+                    <button class="btn ingrTypesButton">Фрукты</button>
+                    <button class="btn ingrTypesButton">Фрукты</button>
+                    <button class="btn ingrTypesButton">Фрукты</button>
+                    <button class="btn ingrTypesButton">Фрукты</button>
+                    <button class="btn ingrTypesButton">Мясная продукция</button>
+                    <button class="btn ingrTypesButton">Фрукты</button>
+                    <button class="btn ingrTypesButton">Фрукты</button>
+                    <button class="btn ingrTypesButton">Мясная продукция</button>
+                    <button class="btn ingrTypesButton">Мясная продукция</button>
                 </div>
                 <div class="EZSearchResults row  gx-3 gy-5" style="margin-top: 8px;">
                     <!-- Тут как раз через шаблонизацию -->

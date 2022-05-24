@@ -3,6 +3,10 @@ main>div {
     margin-top: 80px;
 }
 
+.mainContainer  {
+    margin-top: 90px;
+}
+
 .topDishes {
     margin-bottom: 60px;
 }
@@ -63,4 +67,12 @@ main>div {
     font-size: 16px;
     border-radius: 18px;
     background-color: #F2CEBE;
+}
+
+.typesOfIngridients  {
+    line-height: 60px;
+}
+
+.divTypesOfIngridients input:checked + button {
+    background-color: white;
 }

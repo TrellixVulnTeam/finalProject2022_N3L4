@@ -162,38 +162,44 @@ app.get('/recipe', (req, res) => {
         res.render(__dirname + '/templates/topDishesCard.html', {resolve});
     })
 })
-app.get("/index", (request, response) => {
-    console.log(1);
-    console.log(request);
-    var items = {
-        "cards":
-            [{
-                "name": "Жаркое",
-                "image": ".png",
-                "tags": [{ "tagName": "asd" }, { "tagName": "dsa" }],
-                "descripton": "Lorem ipsum dolor sit amet.",
-                "preptime": "1 час",
-                "ingredients": [{ "name": "морковь", "count": "1шт" }, { "name": "сметана", "count": "1 ст.л." }],
+// app.get("/index", (request, response) => {
 
-            },
-            {
-                "name": "Жаркое",
-                "image": ".png",
-                "tags": [{ "tagName": "asd" }, { "tagName": "dsa" }],
-                "descripton": "Lorem ipsum dolor sit amet.",
-                "preptime": "1 час",
-                "ingredients": [{ "name": "морковь", "count": "1шт" }, { "name": "сметана", "count": "1 ст.л." }],
+//     var items = {
+//         "cards":
+//             [{
+//                 "name": "Жаркое",
+//                 "image": ".png",
+//                 "tags": [{ "tagName": "asd" }, { "tagName": "dsa" }],
+//                 "descripton": "Lorem ipsum dolor sit amet.",
+//                 "preptime": "1 час",
+//                 "ingredients": [{ "name": "морковь", "count": "1шт" }, { "name": "сметана", "count": "1 ст.л." }],
 
-            }]
-    };
-    switch (request["requestName"]) {
-        case "dishCardImport":
-            response.send();
-        // response.send(items["cards"].find(dish => dish.name === request["dishName"]));
-        case "logInUser":
-            response.send()
-    }
-})
+//             },
+//             {
+//                 "name": "Жаркое",
+//                 "image": ".png",
+//                 "tags": [{ "tagName": "asd" }, { "tagName": "dsa" }],
+//                 "descripton": "Lorem ipsum dolor sit amet.",
+//                 "preptime": "1 час",
+//                 "ingredients": [{ "name": "морковь", "count": "1шт" }, { "name": "сметана", "count": "1 ст.л." }],
+
+//             }]
+//     };
+//     switch (request.query.requestName) {
+//         case "dishCardImport":
+//             response.send();
+//         // response.send(items["cards"].find(dish => dish.name === request["dishName"]));
+//             response.send("1");
+//             break;
+//             // response.send(items["cards"].find(dish => dish.name === request["dishName"]));
+//         case "logInUser":
+//             response.send("2");
+//             break;
+//         case "findIngrOfType":
+//             response.send("3")
+//             break
+//     }
+// })
 
 app.listen(port, function () {
     console.log(`Server stated on: http://${host}:${port}`)

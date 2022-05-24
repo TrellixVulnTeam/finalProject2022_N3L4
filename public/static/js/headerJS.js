@@ -10,6 +10,7 @@
 // Написать пример того, что возвращается в шаблон {"items": [] } 
 // or
 // добавить закомментированные возвраты данных через res.send(result) вместо res.render(__dirname ..., result)
+let closeMiniMenuTimeout = undefined
 
 function regMenu() {
     if ($("#logMenus").attr("class").split(" ").indexOf("hidden") != -1) {
@@ -43,8 +44,13 @@ $("#searchForm").click( function () {
         $(this).append($("<button>").attr("class", "btn btn-outline-success").attr("type", "submit").text("Search"))
     }
 })
-$("#profile :not(#logMenus)").hover( function () {
-    if ($(this).parent().children("div").attr("class") == "hidden") {
-        toggleHidden($(this).parent().children("#profileMiniMenu"))
+$("#profile, #profileMiniMenu").hover( function () {
+    if ($("#profileMiniMenu").attr("class").split(" ").indexOf("hidden") != -1) {
+        toggleHidden($("#profileMiniMenu"))
     }
-}, function () { $(document).off("click").click(function (e) { if ($(e.target).closest("#profile").length) { return } toggleHidden($("#profileMiniMenu")); $(document).off("click"); })})
+    if (closeMiniMenuTimeout != undefined) {
+        clearTimeout(closeMiniMenuTimeout);
+    }
+}, function () {closeMiniMenuTimeout = setTimeout(function () { if ($("#profileMiniMenu").attr("class").split(" ").indexOf("hidden") == -1) { toggleHidden($($("#profileMiniMenu"))); $(document).off("click") } }, 5000); 
+                $(document).off("click").click(function (e) { if ($(e.target).closest("#profile").length) { return } toggleHidden($("#profileMiniMenu")); $(document).off("click"); })
+            })

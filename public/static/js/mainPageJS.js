@@ -16,3 +16,10 @@ $(".topDishesText>button, .topDishesCards>div:last-child").click( function () {
         }
     })
 })
+
+$(".typesOfIngridients>button").click( function () {
+    let isChosen = $(this).attr("chosen")
+    $(".typesOfIngridients>button").attr("chosen", "false")
+    $(this).attr("chosen", isChosen == "true" ? "false" : "true") 
+    console.log( $(this).attr("chosen"));
+})
