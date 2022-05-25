@@ -1,13 +1,12 @@
 main {
-    position: absolute;
+    position: relative;
     width: 100%;
-    top: 90px;
+    top: -63px;
     left: 0;
 }
 
 main>.container>.row>div:last-child {
     background-color: #FEB89A;
-    height: 740px;
 }
 
 .signUpHeader {
@@ -44,7 +43,7 @@ main button {
     width: 100%;
     background-color: #FEB89A; 
     border-radius: 33px;
-    border: 0;
+    border: 0 #FEB89A;
     color: black;
 }
 
@@ -64,7 +63,35 @@ main button:nth-child(3) {
     color: #979797;
     text-decoration: underline;
     position: relative;
-    top: -175px;
+    top: -373px;
     background-color: white;
     width: fit-content;
+}
+
+.signUpDecor:last-child {
+    position: relative;
+    font-family: Montserrat;
+    height: auto;
+}
+
+.signUpDecor>div:last-child {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60%;
+}
+
+.signUpDecor>div:last-child img {
+    width: 100%;
+}
+
+
+.signUpDecorText {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-60%);
+    text-align: center;
+    width: 50%;
 }

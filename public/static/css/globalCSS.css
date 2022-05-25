@@ -12,6 +12,10 @@
     src: url(/fonts/Montserrat-Regular.ttf);
 }
 
+main {
+    margin-bottom: 115px;
+}
+
 .EZSearchResults p {
     margin: 0;
 }
@@ -261,4 +265,45 @@ a {
     font-size: 18px;
     width: fit-content;
     bottom: -20px;
+}
+
+footer {
+    font-family: Montserrat;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 335px;
+}
+
+.mainFH {
+    font-size: 42px;
+    font-family: Bad Script;
+}
+
+footer textarea {
+    resize: none;
+    width: 120%;
+    border-radius: 10px;
+    border: #F6BAA0 1px solid;
+    height: 95px;
+    margin: 15px 0;
+    text-indent: 2%;
+}
+
+.bugReportAccept {
+    font-family: Montserrat;
+    padding: 8px 40px;
+    font-size: 24px;
+    border-radius: 18px;
+    border: 0;
+    background-color: #FFA47C;
+}
+
+footer li {
+    list-style-type: none;
+    margin: 15px 0;
+}
+
+.Media {
+    text-align: start;
 }

@@ -26,7 +26,7 @@
     <main>
         <div class="container">
             <div class="row gx-5">
-                <div class="col-xs-12 col-sm-12 col-md-6 regMenu">
+                <div class="col-xs-12 col-lg-6 regMenu">
                     <p class="signUpText">Создать аккаунт</p>
                     <form action="" class="w-100">
                         <div class="row gx-3">
@@ -34,24 +34,30 @@
                                 <input type="text" name="userName" placeholder="Имя" required>
                             </div>
                             <div class="col-6">
-                                <input type="text" name="userSurName" placeholder="Фамилия" required>
+                                <input type="text" name="userSurName" placeholder="Фамилия">
                             </div>
                         </div>
                         <input type="text" name="userIdentifier" placeholder="Почта" required>
-                        <input type="password" name="userCodeWord" placeholder="Пароль" required>
+                        <input type="text" name="userCodeWord" placeholder="Код" required>
+                        <input type="password" name="userPassword" placeholder="Пароль" required>
+                        <input type="password" name="userPasswordAgain" placeholder="Пароль ещё раз" required>
                         <button>Создать</button>
                     </form>
                     <button id="anotherWay">Создать по номеру телефона</button>
-                    <button id="sendCodeAgain" class="d-none">Отправить код</button>
+                    <button id="sendCodeAgain">Отправить код</button>
                 </div>
-                <div class="col-md-6 d-sm-none d-md-block">
+                <div class="col-md-6 d-none d-lg-block d-xl-block d-xxl-block signUpDecor">
+                    <div class="signUpDecorText fs-2 d-xl-none d-xxl-none">Добро<br>пожаловать<p class="fs-6">Больше 2х тысяч человек уже зарегистрировали свои аккаунты</p></div>
+                    <div class="signUpDecorText fs-1 d-lg-none d-xl-inline-block d-xxl-none">Добро<br>пожаловать<p class="fs-5">Больше 2х тысяч человек уже зарегистрировали свои аккаунты</p></div>
+                    <div class="signUpDecorText fs-1  d-lg-none d-xl-none d-xxl-inline-block">Добро<br>пожаловать<p class="fs-4">Больше 2х тысяч человек уже зарегистрировали свои аккаунты</p></div>
+                    <div><img src="/images/signUpDecor.svg" alt=""></div>
                 </div>
             </div>
         </div>
     </main>
 
     
-    <!-- <footer>{% include "templates/footer.html" %}</footer> -->
+    <footer>{% include "templates/footer.html" %}</footer>
 
 </body>
 
