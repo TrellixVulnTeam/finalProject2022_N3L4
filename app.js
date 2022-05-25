@@ -144,9 +144,9 @@ app.get('/bettersearch', function (request, response) {
         response.render(__dirname + '/pages/bsearch.html', resolve);
     })
 })
-app.get('/registration', function (request, response) {
+app.get('/signUp', function (request, response) {
     get_data("all", []).then((resolve) => {
-        response.render(__dirname + '/pages/registration.html', resolve);
+        response.render(__dirname + '/pages/signUp.html', resolve);
     })
 })
 
