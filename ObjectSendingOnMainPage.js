@@ -12,8 +12,12 @@ var items = {
                     // Список с тэгами, в каждом имя тэга
                     "descripton": "Lorem ipsum dolor sit amet.",
                     // Описание блюда
-                    "preptime": "1 час"
+                    "coockingtime": "1 час",
                     // Время приготовления блюда
+                    "id": "id",
+                    // id блюда
+                    "isLiked": "/images/likedHeart.svg если лайкнуто, /images/unlikedHeart.svg, если не лайкнуто"
+                    // Лайкнуто ли блюдо
                 },
                 {
                     "name": "Жаркое",

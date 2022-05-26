@@ -164,7 +164,7 @@ app.get('/recipe', (req, res) => {
     let r= req.query.r;
     console.log(r)
     get_data("recipe", [r]).then((resolve) => {
-        res.render(__dirname + '/templates/topDishesCard.html', {resolve});
+        res.render(__dirname + '/pages/recipe.html', {resolve});
     })
 })
 // app.get("/index", (request, response) => {

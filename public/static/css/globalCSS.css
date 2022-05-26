@@ -16,6 +16,10 @@ main {
     margin-bottom: 115px;
 }
 
+main>div:first-child {
+    margin-top: 99px;
+}
+
 .EZSearchResults p {
     margin: 0;
 }
@@ -146,17 +150,22 @@ a {
 }
 
 .topDishImgDiv  {
+    position: relative;
     overflow: hidden;
     border-radius: 2px;
-    height: 279px;
+}
+
+.topDishImgDiv>button {
+    padding: 0;
+    width: 20px;
+}
+
+.topDishImgDiv>button>img {
+    width: 100%;
 }
 
 .topDishImg  {
     position: relative;
-    width: 100%;
-    height: auto;
-    top: 50%;
-    transform: translateY(-50%);
 }
 
 #logCurrentMenu form input {
@@ -249,10 +258,6 @@ a {
     height: 16px;
 }
 
-.dishImg {
-    width: 100%;
-}
-
 .cardText li {
     list-style-type: none;
 }
@@ -307,3 +312,11 @@ footer li {
 .Media {
     text-align: start;
 }
+
+.topDishImgDiv>button {
+    border: 0;
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    top: 11px;
+    right: 15px;
+}   

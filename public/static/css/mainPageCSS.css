@@ -37,10 +37,11 @@ main>div {
     font-size: 42px;
     font-family: Bad Script;
     margin-bottom: 25px;
+    margin-top: 120px;
 }
 
-.mostPopularDishesCards .topDishImgDiv {
-    height: 353px;
+.mostPopularDishesCards div:first-child .topDishImgDiv img {
+    transform: translateY(-15%);
 }
 
 .mostPopularDishesCards .topDishDesc  {

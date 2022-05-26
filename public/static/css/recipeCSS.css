@@ -1,0 +1,23 @@
+main>div:first-child {
+    margin-top: 219px;
+}
+
+.dishText {
+    text-align: end;
+    font-family: Montserrat;
+}
+
+.dishText p {
+    display: inline-block;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.dishText li {
+    list-style-type: none;
+    font-size: 22px;
+}
+
+.dishImgDiv {
+    overflow: hidden;
+}

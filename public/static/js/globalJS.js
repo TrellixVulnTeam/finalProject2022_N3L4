@@ -54,3 +54,7 @@ $("#profile, #profileMiniMenu").hover( function () {
 }, function () {closeMiniMenuTimeout = setTimeout(function () { if ($("#profileMiniMenu").attr("class").split(" ").indexOf("hidden") == -1) { toggleHidden($($("#profileMiniMenu"))); $(document).off("click") } }, 5000); 
                 $(document).off("click").click(function (e) { if ($(e.target).closest("#profile").length) { return } toggleHidden($("#profileMiniMenu")); $(document).off("click"); })
             })
+$(".topDishImgDiv button").click( function () {
+    console.log($(this).children("img").attr("src"));
+    $(this).children("img").attr("src", $(this).children("img").attr("src") == "/images/likedHeart.svg" ? "/images/unlikedHeart.svg" : "/images/likedHeart.svg")
+})

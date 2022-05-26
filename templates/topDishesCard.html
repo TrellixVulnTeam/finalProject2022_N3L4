@@ -1,18 +1,41 @@
-
-<div class="topDishImgDiv">
-    <img src="/images/image46.svg" alt="topDishImg" class="topDishImg">
+<!-- <div class="topDishImgDiv">
+    <img src="{{  item.image }}" alt="topDishImg" class="topDishImg w-100">
+    <button><img src="{{ iten.isLiked }}" alt=""></button>
 </div>
 <div class="topDishText row justify-content-between">
     <div class="col-auto">
         <p style="font-size: 24px;">{{item.name}}</p>
         <div class="topDishTags">
-            <a class="topDishTag btn">#{{item.tag}}</a>
+            <a class="topDishTag btn" href="/bettersearch?">#{{item.tag}}</a>
         </div>
         <div class="topDishDesc" style="font-size: 9px; margin-bottom: 10px;">{{item.description}}</div>
     </div>
     <div class="col-5" style="margin-top: 7px; white-space: nowrap;">
         <p style="font-size: 12px; margin-bottom: 30px; margin-right: 10px;">
             <img src="/images/clock.svg" alt="">{{item.cookingtime}}
+        </p>
+    </div>
+    <a href="/recipe?r={{item.id}}" class="topDishGoAway btn">Посмотреть</a>
+</div> -->
+
+<div class="topDishImgDiv">
+    <img src="/images/image46.svg" alt="topDishImg" class="topDishImg w-100">
+    <button><img src="/images/unlikedHeart.svg"></button>
+</div>
+<div class="topDishText row justify-content-between">
+    <div class="col-auto">
+        <p style="font-size: 24px;">Тыквенный суп</p>
+        <div class="topDishTags">
+            <a class="topDishTag btn">#тыква</a>
+            <a class="topDishTag btn">#тыква</a>
+            <a class="topDishTag btn">#тыква</a>
+            <a class="topDishTag btn">#тыква</a>
+        </div>
+        <div class="topDishDesc" style="font-size: 9px; margin-bottom: 10px;">Простой в приготовлении вегатарианский суп из тыквы.</div>
+    </div>
+    <div class="col-5" style="margin-top: 7px; white-space: nowrap;">
+        <p style="font-size: 12px; margin-bottom: 30px; margin-right: 10px;">
+            <img src="/images/clock.svg" alt="">1 час
         </p>
     </div>
     <a href="/recipe?r={{item.id}}" class="topDishGoAway btn">Посмотреть</a>
