@@ -35,8 +35,7 @@
                 </form>
                 <button class="btn miniTextGoAway">Отправить код повторно</button>
                 <div class="row w-100 extraInfo justify-content-between gx-0 gy-2">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4"><input type="" name=""
-                            class="w-100"></div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4"><select></select></div>
                     <a class="col-lg-8 col-xl-8 xol-xxl-8 col-xs-12 col-sm-12 col-md-12" href="">Политика
                         конфиденциальности</a>
                 </div>
@@ -55,8 +54,7 @@
                 <button class="btn miniTextGoAway" id="signInP">Войти по номеру телефона</button>
                 <button class="btn miniTextGoAway" id="passwordResetEC">Забыли пароль?</button>
                 <div class="row w-100 extraInfo justify-content-between gx-0 gy-2">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4"><input type="" name=""
-                            class="w-100"></div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4"><select></select></div>
                     <a class="col-lg-8 col-xl-8 xol-xxl-8 col-xs-12 col-sm-12 col-md-12" href="">Политика
                         конфиденциальности</a>
                 </div>
@@ -74,8 +72,7 @@
                 <button class="btn">Войти</button>
                 <button class="sendCodeAgain">Отправить код повторно</button>
                 <div class="row w-100 extraInfo justify-content-between gx-0 gy-2">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4"><input type="" name=""
-                            class="w-100"></div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4"><select></select></div>
                     <a class="col-lg-8 col-xl-8 xol-xxl-8 col-xs-12 col-sm-12 col-md-12" href="">Политика
                         конфиденциальности</a>
                 </div>
@@ -93,14 +90,13 @@
                     <button class="btn">Восстановить пароль</button>
                 </form>
                 <div class="row w-100 extraInfo justify-content-between gx-0 gy-2">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4"><input type="" name=""
-                            class="w-100"></div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4"><select></select></div>
                     <a class="col-lg-8 col-xl-8 xol-xxl-8 col-xs-12 col-sm-12 col-md-12" href="">Политика
                         конфиденциальности</a>
                 </div>
             </div>
         </div>
-        <div id="dishCardMenu" class="col-lg-6 col-md-8 col-sm-8 col-xs-12 mx-auto">
+        <div id="dishCardMenu" class="col-lg-6 col-md-6col-md-8 col-sm-8 col-xs-12 mx-auto">
         </div>
     </div>
 
@@ -116,7 +112,7 @@
                     <div class="dishImgDiv"><img src="/images/image46.svg" alt="" class="dishImg"></div>
                     <div class="dishTags">
                         {% for tagName in items.tags %}
-                            <a href="" class="topDishTag btn"></a>
+                        <a href="" class="topDishTag btn"></a>
                         {% endfor %}
                         <a href="" class="topDishTag btn">#тыква</a>
                         <a href="" class="topDishTag btn">#тыква</a>
@@ -128,24 +124,34 @@
                     <p class="w-50">Борщ со сметаной</p>
                     <li>Ингридиенты:</li>
                     {% for ingr in items.ingrs %}
-                        <li>{{ ingr.name }} - {{ ingr.count }}</li>
+                    <li>{{ ingr.name }} - {{ ingr.count }}</li>
                     {% endfor %}
                     <li>Картофель - 3шт</li>
                     <li>Картофель - 3шт</li>
                     <li>Картофель - 3шт</li>
                     <li>Картофель - 3шт</li>
                 </div>
-            </div>
-            {% for prepStep in items %}
+                {% for prepStep in items %}
                 <div class="col-6">
-                    <p></p>
+                    <p class="stepMainText"></p>
+                    <div class="stepImgDiv"></div>
                 </div>
-            {% endfor %}
+                {% endfor %}
+                <div class="col-xl-6 col-xxl-6 col-lg-6 col-md-6col-12">
+                    <p class="stepMainText">Шаг 1</p>
+                    <div class="stepImgDiv">
+                        <img src="/images/stepImg.svg" alt="" class="w-100">
+                    </div>
+                    <p class="stepDescText">Подготовьте продукты. Овощи и зелень предварительно вымойте и обсушите. С
+                        капусты удалите верхние листья. Томатную пасту можете заменить помидорами в собственном соку,
+                        измельчив их блендером в пюре.</p>
+                </div>
+            </div>
         </div>
 
     </main>
 
-    
+
     <footer>{% include "templates/footer.html" %}</footer>
 
 </body>

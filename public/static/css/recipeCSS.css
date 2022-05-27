@@ -18,6 +18,18 @@ main>div:first-child {
     font-size: 22px;
 }
 
+main>.container:first-child .row>.col-6:first-child, main>.container:first-child .row>.col-6:nth-child(2) {
+    margin-bottom: 112px;
+}
+
 .dishImgDiv {
     overflow: hidden;
+}
+
+.stepMainText {
+    font-size: 18px;
+}
+
+.stepDescText {
+    font-size: 22px;
 }

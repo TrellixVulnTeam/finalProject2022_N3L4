@@ -35,8 +35,7 @@
                 </form>
                 <button class="btn miniTextGoAway">Отправить код повторно</button>
                 <div class="row w-100 extraInfo justify-content-between gx-0 gy-2">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4"><input type="" name=""
-                            class="w-100"></div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4"><select></select></div>
                     <a class="col-lg-8 col-xl-8 xol-xxl-8 col-xs-12 col-sm-12 col-md-12" href="">Политика
                         конфиденциальности</a>
                 </div>
@@ -55,8 +54,7 @@
                 <button class="btn miniTextGoAway" id="signInP">Войти по номеру телефона</button>
                 <button class="btn miniTextGoAway" id="passwordResetEC">Забыли пароль?</button>
                 <div class="row w-100 extraInfo justify-content-between gx-0 gy-2">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4"><input type="" name=""
-                            class="w-100"></div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4"><select><option>Русский</option><option>Английский</option></select><img src="/images/miniArrow.svg" alt=""></div>
                     <a class="col-lg-8 col-xl-8 xol-xxl-8 col-xs-12 col-sm-12 col-md-12" href="">Политика
                         конфиденциальности</a>
                 </div>
@@ -74,8 +72,7 @@
                 <button class="btn">Войти</button>
                 <button class="sendCodeAgain">Отправить код повторно</button>
                 <div class="row w-100 extraInfo justify-content-between gx-0 gy-2">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4"><input type="" name=""
-                            class="w-100"></div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4"><select></select></div>
                     <a class="col-lg-8 col-xl-8 xol-xxl-8 col-xs-12 col-sm-12 col-md-12" href="">Политика
                         конфиденциальности</a>
                 </div>
@@ -93,8 +90,7 @@
                     <button class="btn">Восстановить пароль</button>
                 </form>
                 <div class="row w-100 extraInfo justify-content-between gx-0 gy-2">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4"><input type="" name=""
-                            class="w-100"></div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4"><select></select></div>
                     <a class="col-lg-8 col-xl-8 xol-xxl-8 col-xs-12 col-sm-12 col-md-12" href="">Политика
                         конфиденциальности</a>
                 </div>
@@ -178,15 +174,17 @@
                     <button class="btn ingrTypesButton">Мясная продукция</button>
                     <button class="btn ingrTypesButton">Мясная продукция</button>
                 </div>
-                <div class="EZSearchResults row  gx-3 gy-5" style="margin-top: 8px;">
-                    <div class="col-2">{% include "templates/EZSearchRadioButton.html" %}</div>
-                    <div class="col-2">{% include "templates/EZSearchRadioButton.html" %}</div>
-                    <div class="col-2">{% include "templates/EZSearchRadioButton.html" %}</div>
-                    <div class="col-2">{% include "templates/EZSearchRadioButton.html" %}</div>
-                    <div class="col-2">{% include "templates/EZSearchRadioButton.html" %}</div>
-                    <div class="col-2">{% include "templates/EZSearchRadioButton.html" %}</div>
-                    <div class="col-2">{% include "templates/EZSearchRadioButton.html" %}</div>
-                    <div class="col-2">{% include "templates/EZSearchRadioButton.html" %}</div>
+                <div class="EZSearchResults row gx-4 gx-lg-3 gy-5" style="margin-top: 8px;">
+                    <div class="col-lg-2 col-xxl-2 col-xl-2 col-4 col-md-3">{% include "templates/EZSearchRadioButton.html" %}</div>
+                    <div class="col-lg-2 col-xxl-2 col-xl-2 col-4 col-md-3">{% include "templates/EZSearchRadioButton.html" %}</div>
+                    <div class="col-lg-2 col-xxl-2 col-xl-2 col-4 col-md-3">{% include "templates/EZSearchRadioButton.html" %}</div>
+                    <div class="col-lg-2 col-xxl-2 col-xl-2 col-4 col-md-3">{% include "templates/EZSearchRadioButton.html" %}</div>
+                    <div class="col-lg-2 col-xxl-2 col-xl-2 col-4 col-md-3">{% include "templates/EZSearchRadioButton.html" %}</div>
+                    <div class="col-lg-2 col-xxl-2 col-xl-2 col-4 col-md-3">{% include "templates/EZSearchRadioButton.html" %}</div>
+                    <div class="col-lg-2 col-xxl-2 col-xl-2 col-4 col-md-3">{% include "templates/EZSearchRadioButton.html" %}</div>
+                    <div class="col-lg-2 col-xxl-2 col-xl-2 col-4 col-md-3">{% include "templates/EZSearchRadioButton.html" %}</div>
+                    <div class="col-lg-2 col-xxl-2 col-xl-2 col-4 col-md-3">{% include "templates/EZSearchRadioButton.html" %}</div>
+                    <div class="col-lg-2 col-xxl-2 col-xl-2 col-4 col-md-3">{% include "templates/EZSearchRadioButton.html" %}</div>
                 </div>
             </div>
         </div>

@@ -240,10 +240,15 @@ a {
     color: #737373;
 }
 
+.extraInfo a:last-child {
+    margin-top: 12px;
+}
+
 .extraInfo a {
     white-space: nowrap;
     text-align: end;
     color: #737373;
+    line-height: 16px;
 }
 
 .sendCodeAgain {
@@ -320,3 +325,33 @@ footer li {
     top: 11px;
     right: 15px;
 }   
+
+.extraInfo select {
+    width: 75%;
+    background-color: white;
+    color: #737373;
+    border: none;
+    text-decoration: none;
+    outline: none;
+    -webkit-appearance: none;
+    position: relative;
+    padding: 5px;
+    padding-right: 20px;
+    float: right;
+    top: 0;
+}
+.extraInfo select option {
+    font-size: 16px;
+    text-align: end;
+}
+
+.extraInfo>div:first-child {
+    position: relative;
+}
+
+.extraInfo>div>img  {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 7px;
+}

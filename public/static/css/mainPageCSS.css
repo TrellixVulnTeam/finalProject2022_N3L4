@@ -73,3 +73,8 @@ main>div {
 .typesOfIngridients  {
     line-height: 60px;
 }
+
+
+.mainIngrBox p:first-line {
+    font-size: 22px;
+}
