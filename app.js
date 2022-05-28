@@ -64,15 +64,15 @@ async function get_data(query, data_query) {
         }
     }
     // console.log(data_query);
-
+    const Bsearch = `SELECT * FROM recipe WHERE category IN('${data_query.join("', '")}')`
     console.log(`SELECT * FROM recipe WHERE category IN('${data_query.join("', '")}')`);
     let sql_queries = {
         all: "SELECT * FROM recipe",
         search: "SELECT * FROM recipe",
-        bSearchCheclBx: `SELECT * FROM recipe WHERE category IN('${data_query.join("', '")}')`,//SELECT * FROM recipe WHERE category IN('lunch', 'supper', 'lunch')//`SELECT * FROM recipe WHERE category IN('${data_query.join("', '")}')`
+        bSearchCheclBx: `${Bsearch}`,//SELECT * FROM recipe WHERE category IN('lunch', 'supper', 'lunch')//`SELECT * FROM recipe WHERE category IN('${data_query.join("', '")}')`
         index:`SELECT * FROM recipe
-        INNER  JOIN SeasonTop
-        INNER  JOIN ingridients
+        INNER JOIN SeasonTop ON recipe.id=SeasonTop.id
+          INNER JOIN tags
         `,
         recipe:`SELECT * FROM recipe WHERE ? = id`
     }
@@ -98,7 +98,7 @@ async function get_data(query, data_query) {
 app.get('/', (req, res) => {
     l = []
     get_data("index", []).then((resolve) => {
-        // console.log({resolve})
+        console.log({resolve})
         // res.send({resolve})
         for(i = 0, l = resolve.length; i < l; i++){
             let unparsedtag = resolve[i]["tag"]
@@ -164,6 +164,7 @@ app.get('/recipe', (req, res) => {
     let r= req.query.r;
     console.log(r)
     get_data("recipe", [r]).then((resolve) => {
+        console.log({resolve})
         res.render(__dirname + '/pages/recipe.html', {resolve});
     })
 })

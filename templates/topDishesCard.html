@@ -4,7 +4,7 @@
 </div>
 <div class="topDishText row justify-content-between">
     <div class="col-auto">
-        <p style="font-size: 24px;">{{item.name}}</p>
+        <p style="font-size: 24px;"></p>
         <div class="topDishTags">
             <a class="topDishTag btn" href="/bettersearch?">#{{item.tag}}</a>
         </div>
@@ -24,18 +24,18 @@
 </div>
 <div class="topDishText row justify-content-between">
     <div class="col-auto">
-        <p style="font-size: 24px;">Тыквенный суп</p>
+        <p style="font-size: 24px;">{{item.name}}</p>
         <div class="topDishTags">
-            <a class="topDishTag btn">#тыква</a>
-            <a class="topDishTag btn">#тыква</a>
-            <a class="topDishTag btn">#тыква</a>
-            <a class="topDishTag btn">#тыква</a>
+            <a class="topDishTag btn">{{item.tag}}</a>
+            <a class="topDishTag btn">{{item.tag}}</a>
+            <a class="topDishTag btn">{{item.tag}}</a>
+            <a class="topDishTag btn">{{item.tag}}</a>
         </div>
-        <div class="topDishDesc" style="font-size: 9px; margin-bottom: 10px;">Простой в приготовлении вегатарианский суп из тыквы.</div>
+        <div class="topDishDesc" style="font-size: 9px; margin-bottom: 10px;">{{item.description}}</div>
     </div>
     <div class="col-5" style="margin-top: 7px; white-space: nowrap;">
         <p style="font-size: 12px; margin-bottom: 30px; margin-right: 10px;">
-            <img src="/images/clock.svg" alt="">1 час
+            <img src="/images/clock.svg" alt="">{{item.cookingtime}} час
         </p>
     </div>
     <a href="/recipe?r={{item.id}}" class="topDishGoAway btn">Посмотреть</a>
