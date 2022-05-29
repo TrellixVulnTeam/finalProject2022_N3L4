@@ -105,15 +105,15 @@
 
 
     <main>
-        {% for item in resolve %}
+
         <div class="container">
             <div class="row gx-4">
                 <div class="col-6">
                     <div class="dishImgDiv"><img src="/images/image46.svg" alt="" class="dishImg"></div>
                     <div class="dishTags">
-                        
+                        {% for item in resolve %}
                         <a href="" class="topDishTag btn"></a>
-                        
+                        {% endfor %}
                         <a href="" class="topDishTag btn">#тыква</a>
                         <a href="" class="topDishTag btn">#тыква</a>
                         <a href="" class="topDishTag btn">#тыква</a>
@@ -121,7 +121,7 @@
                     </div>
                 </div>
                 <div class="col-6 dishText">
-                    <p class="w-50">{{item.name}}</p>
+                    <p class="w-50">{{resolve.name}}</p>
                     <li>Ингридиенты:</li>
                     {% for ingr in resolve %}
                     <li>{{ ingr.name }} - {{ ingr.count }}</li>
@@ -146,7 +146,7 @@
                 </div>
             </div>
         </div>
-        {% endfor %}
+
     </main>
 
 

@@ -14,13 +14,44 @@ var bodyParser = require('body-parser');
 
 app.use(bodyParser.json()); //<redis>
 
+var session = require('express-session');
+
 var redis = require('redis');
 
-var client = redis.createClient(); //</redis>
+var connectRedis = require('connect-redis');
+
+var RedisStore = connectRedis(session);
+var redisClient = redis.createClient({
+  port: 6379,
+  host: 'localhost'
+});
+app.use(session({
+  store: new RedisStore({
+    client: redisClient
+  }),
+  secret: 'mySecret',
+  saveUninitialized: false,
+  resave: false,
+  cookie: {
+    secure: false,
+    // if true: only transmit cookie over https
+    httpOnly: true,
+    // if true: prevents client side JS from reading the cookie
+    maxAge: 1000 * 60 * 30,
+    // session max age in milliseconds
+    sameSite: 'lax' // make sure sameSite is not none
+
+  }
+}));
+console.log(redis['host'], redis['port']); //</redis>
 
 app.use(express["static"](__dirname + '/public/static'));
 
 var nunjucks = require('nunjucks');
+
+var res = require('express/lib/response');
+
+var req = require('express/lib/request');
 
 nunjucks.configure('.', {
   autoescape: true,
@@ -31,7 +62,7 @@ var env = nunjucks.configure(".", {
 });
 
 function get_data(query, data_query) {
-  var db, _i, myIndex, sql_queries, sql, promise, data;
+  var db, _i, myIndex, Bsearch, sql_queries, sql, promise, data;
 
   return regeneratorRuntime.async(function get_data$(_context) {
     while (1) {
@@ -40,8 +71,7 @@ function get_data(query, data_query) {
           db = new sqlite.Database("recipes.db", function (err) {
             if (err) {
               console.error(err.message);
-            } else {
-              console.log("connect to db complete!");
+            } else {// console.log("connect to db complete!");
             }
           }); // let dataex = "";
 
@@ -57,16 +87,21 @@ function get_data(query, data_query) {
             if (myIndex !== -1) {
               data_query.splice(myIndex, 1);
             }
-          }
+          } // console.log(data_query);
 
-          console.log(data_query);
-          console.log("SELECT * FROM recipe IN ('".concat(data_query.join("', '"), "')"));
+
+          Bsearch = "SELECT * FROM recipe WHERE category IN('".concat(data_query.join("', '"), "')");
+          console.log("SELECT * FROM recipe WHERE category IN('".concat(data_query.join("', '"), "')"));
           sql_queries = {
             all: "SELECT * FROM recipe",
             search: "SELECT * FROM recipe",
-            bSearchCheclBx: "SELECT * FROM recipe IN ('".concat(data_query.join("', '"), "')")
+            bSearchCheclBx: "".concat(Bsearch),
+            //SELECT * FROM recipe WHERE category IN('lunch', 'supper', 'lunch')//`SELECT * FROM recipe WHERE category IN('${data_query.join("', '")}')`
+            index: "SELECT * FROM recipe\n        INNER JOIN SeasonTop ON recipe.id=SeasonTop.id\n          INNER JOIN tags\n        ",
+            recipe: "SELECT * FROM recipe WHERE ? = id"
           };
-          sql = sql_queries[query]; //let sql = "SELECT * FROM users";
+          sql = sql_queries[query];
+          console.log(sql_queries.bSearchCheclBx); //let sql = "SELECT * FROM users";
 
           promise = new Promise(function (resolve, reject) {
             db.all(sql, data_query, function (err, rows) {
@@ -77,15 +112,15 @@ function get_data(query, data_query) {
               }
             });
           });
-          _context.next = 10;
+          _context.next = 11;
           return regeneratorRuntime.awrap(promise);
 
-        case 10:
+        case 11:
           data = _context.sent;
           db.close();
           return _context.abrupt("return", data);
 
-        case 13:
+        case 14:
         case "end":
           return _context.stop();
       }
@@ -95,12 +130,20 @@ function get_data(query, data_query) {
 
 app.get('/', function (req, res) {
   l = [];
-  get_data("all", []).then(function (resolve) {
-    for (i = 0; i < resolve.length; i++) {}
+  get_data("index", []).then(function (resolve) {
+    console.log({
+      resolve: resolve
+    }); // res.send({resolve})
 
-    console.log(l); // res.send("hello")
+    for (i = 0, l = resolve.length; i < l; i++) {
+      var unparsedtag = resolve[i]["tag"];
+      var parsedtags = unparsedtag.split(","); // console.log(parsedtags)
+      // console.log(resolve[i]["tag"]);
+    }
 
-    res.render(__dirname + '/pages/index.html', resolve);
+    res.render(__dirname + '/pages/index.html', {
+      resolve: resolve
+    });
   });
 });
 app.get('/search', function (request, response) {
@@ -109,23 +152,23 @@ app.get('/search', function (request, response) {
   get_data("search", []).then(function (resolve) {
     // const data = { resolve };
     for (var _i2 = 0, _l = resolve.length; _i2 < _l; _i2++) {
-      var obj = resolve[_i2];
-      console.log(search, obj.name);
+      var obj = resolve[_i2]; // console.log(search, obj.name)
+
       var similarity = stringSimilarity.compareTwoStrings(String(search == undefined ? "test" : search.toLowerCase()), obj.name.toLowerCase());
 
       if (similarity >= 0.2) {
-        console.log(obj.name, 'Сходство(name):', similarity);
+        // console.log(obj.name, 'Сходство(name):', similarity)
         SearchedList.push(obj);
       }
     }
 
     for (var _i3 = 0, _l2 = resolve.length; _i3 < _l2; _i3++) {
-      var obj = resolve[_i3];
-      console.log(search, obj.name);
+      var obj = resolve[_i3]; // console.log(search, obj.name)
+
       var similarity = stringSimilarity.compareTwoStrings(String(search == undefined ? "test" : search.toLowerCase()), obj.category.toLowerCase());
 
       if (similarity >= 0.2) {
-        console.log(obj.name, 'Сходство(name):', similarity);
+        // console.log(obj.name, 'Сходство(name):', similarity)
         SearchedList.push(obj);
       }
     }
@@ -139,25 +182,12 @@ app.get('/bettersearch', function (request, response) {
   get_data("all", []).then(function (resolve) {
     response.render(__dirname + '/pages/bsearch.html', resolve);
   });
-}); //     let categorybox = request.query.categorycheckbox;
-//     let categoryradio = request.query.category;
-//     // console.log(categoryradio, categorybox)
-//     // var list = []
-//     // let composition = request.body.composition;
-//     // let type = request.body.type;
-//     
-//         // for (let i = 0, l = resolve.length; i < l; i++) {
-//         //     var obj = resolve[i];
-//         //     var similarity = stringSimilarity.compareTwoStrings(String(categorybox), obj.category)
-//         //     if (similarity >= 0.2) {
-//         //         // console.log(obj.name, 'Сходство(name):', similarity)
-//         //         list.push(obj)
-//         //     }
-//         // }
-//         response.render(__dirname + '/pages/bsearch.html', resolve);
-//     
-// })
-
+});
+app.get('/signUp', function (request, response) {
+  get_data("all", []).then(function (resolve) {
+    response.render(__dirname + '/pages/signUp.html', resolve);
+  });
+});
 app.get('/bettersearch1', function (request, res) {
   var q1 = String(request.query.q1);
   var q2 = String(request.query.q2);
@@ -166,6 +196,53 @@ app.get('/bettersearch1', function (request, res) {
     res.json(resolve); // res.render(__dirname + '/pages/bsearch.html', resolve);
   });
 });
+app.get('/recipe', function (req, res) {
+  var r = req.query.r;
+  console.log(r);
+  get_data("recipe", [r]).then(function (resolve) {
+    console.log({
+      resolve: resolve
+    });
+    res.render(__dirname + '/pages/recipe.html', {
+      resolve: resolve
+    });
+  });
+}); // app.get("/index", (request, response) => {
+//     var items = {
+//         "cards":
+//             [{
+//                 "name": "Жаркое",
+//                 "image": ".png",
+//                 "tags": [{ "tagName": "asd" }, { "tagName": "dsa" }],
+//                 "descripton": "Lorem ipsum dolor sit amet.",
+//                 "preptime": "1 час",
+//                 "ingredients": [{ "name": "морковь", "count": "1шт" }, { "name": "сметана", "count": "1 ст.л." }],
+//             },
+//             {
+//                 "name": "Жаркое",
+//                 "image": ".png",
+//                 "tags": [{ "tagName": "asd" }, { "tagName": "dsa" }],
+//                 "descripton": "Lorem ipsum dolor sit amet.",
+//                 "preptime": "1 час",
+//                 "ingredients": [{ "name": "морковь", "count": "1шт" }, { "name": "сметана", "count": "1 ст.л." }],
+//             }]
+//     };
+//     switch (request.query.requestName) {
+//         case "dishCardImport":
+//             response.send();
+//         // response.send(items["cards"].find(dish => dish.name === request["dishName"]));
+//             response.send("1");
+//             break;
+//             // response.send(items["cards"].find(dish => dish.name === request["dishName"]));
+//         case "logInUser":
+//             response.send("2");
+//             break;
+//         case "findIngrOfType":
+//             response.send("3")
+//             break
+//     }
+// })
+
 app.listen(port, function () {
   console.log("Server stated on: http://".concat(host, ":").concat(port));
 });
