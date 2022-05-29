@@ -44,15 +44,15 @@ $("#searchForm").click( function () {
         $(this).append($("<button>").attr("class", "btn btn-outline-success").attr("type", "submit").text("Search"))
     }
 })
-$("#profile, #profileMiniMenu").hover( function () {
-    if ($("#profileMiniMenu").attr("class").split(" ").indexOf("hidden") != -1) {
-        toggleHidden($("#profileMiniMenu"))
+$("#profile, .profileMiniMenu").hover( function () {
+    if ($(".profileMiniMenu").attr("class").split(" ").indexOf("hidden") != -1) {
+        toggleHidden($(".profileMiniMenu"))
     }
     if (closeMiniMenuTimeout != undefined) {
         clearTimeout(closeMiniMenuTimeout);
     }
-}, function () {closeMiniMenuTimeout = setTimeout(function () { if ($("#profileMiniMenu").attr("class").split(" ").indexOf("hidden") == -1) { toggleHidden($($("#profileMiniMenu"))); $(document).off("click") } }, 5000); 
-                $(document).off("click").click(function (e) { if ($(e.target).closest("#profile").length) { return } toggleHidden($("#profileMiniMenu")); $(document).off("click"); })
+}, function () {closeMiniMenuTimeout = setTimeout(function () { if ($(".profileMiniMenu").attr("class").split(" ").indexOf("hidden") == -1) { toggleHidden($($(".profileMiniMenu"))); $(document).off("click") } }, 5000); 
+                $(document).off("click").click(function (e) { if ($(e.target).closest("#profile").length) { return } toggleHidden($(".profileMiniMenu")); $(document).off("click"); })
             })
 $(".topDishImgDiv button").click( function () {
     console.log($(this).children("img").attr("src"));

@@ -129,13 +129,36 @@ a {
     line-height: 67%;
     border-radius: 33px;
 }
-#profileMiniMenu  {
+
+.profileMiniMenu  {
     background-color: white;
     z-index: 10;
     padding: 20px 10px;
     position: absolute;
     top: 100px;
-    left: -57px;
+    transform: translateX(-50%);
+}
+
+.profileMiniMenu:last-child  {
+    padding: 0 42px;
+    width: fit-content;
+    text-align: center;
+}
+
+.profileMiniMenu:last-child button {
+    width: 193px;
+}
+
+.profileMiniMenu:last-child img {
+    margin-top: 54px;
+}
+
+.profileMiniMenu:last-child p  {
+    margin: 16px 0 0 0;
+}
+
+.profileMiniMenu:last-child a:last-child {
+    margin-bottom: 20px;
 }
 
 #logMenus {
@@ -354,4 +377,23 @@ footer li {
     top: 50%;
     transform: translateY(-50%);
     right: 7px;
+}
+
+.signOut {
+    margin-top: 55px;
+    font-size: 18px;
+    display: block;
+}
+
+.addRecipe {
+    margin-top: 45px;
+    color: #FCA079;
+    font-size: 24px;
+    display: block;
+}
+
+#settings {
+    font-size: 18px;
+    margin-top: 25px;
+    display: block;
 }

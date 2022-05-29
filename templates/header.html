@@ -25,10 +25,17 @@
             </form>
             <div id="profile" style="margin-left: 25px; margin-top: 15px; position: relative;">
                 <img src="/images/profileImg.svg" alt="123">
-                <div id="profileMiniMenu" class="hidden">
-                    <img src="" alt="profileMiniMenuImg">
+                <div class="hidden profileMiniMenu">
+                    <img src="/images/profileImg.svg" alt="profileMiniMenuImg">
                     <button class="btn"  id="signInE">Войти<br>в аккаунт</button>
                     <a href="/signUp" class="btn" id="signUpE">Зарегистрировать<br>аккаунт</a>
+                </div>
+                <div class="profileMiniMenu d-none">
+                    <img src="/images/profileSetImg.svg" alt="profileMiniMenuImg">
+                    <p style="font-size: 24px;">Евгений Незнайкин</p>
+                    <button id="settings" class="btn">Аллергии отсутствуют</button>
+                    <a href="" class="addRecipe">Добавить рецепт</a>
+                    <a href="" class="signOut">Выйти из аккаунта</a>
                 </div>
             </div>
     </div>
