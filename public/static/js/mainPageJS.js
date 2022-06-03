@@ -1,8 +1,6 @@
 function toggleHidden(Obj) {
     Obj.toggleClass("hidden shown")
 }
-function setEqualHeight(columns) {
-}
 
 $(".topDishesCards>div").each(function (index) {
     if (index > 3) {
@@ -20,10 +18,7 @@ $(".topDishesText>button, .topDishesCards>div:last-child").click(function () {
 })
 
 $(".typesOfIngridients>button").click(function () {
-    let isChosen = $(this).attr("chosen")
-    $(".typesOfIngridients>button").attr("chosen", "false")
-    $(this).attr("chosen", isChosen == "true" ? "false" : "true")
-    console.log($(this).attr("chosen"));
+    $(this).children("input").prop("checked", $(this).children("input").prop("checked") == false ? true : false);
 })
 
 $(document).ready( function (){
