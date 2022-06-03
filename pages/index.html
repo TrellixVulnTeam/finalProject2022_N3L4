@@ -121,7 +121,7 @@
 
         <div class="container topDishes">
             <div class="topDishesText">
-                <p style="font-size: 42px;"><i>10 новинок этого сезона</i></p>
+                <p style="font-size: 42px;"><i>Новинки этого сезона</i></p>
                 <button class="btn">Увидеть все</button>
             </div>
             <div class="topDishesCards row gx-4 gy-4 justify-content-center">
@@ -135,8 +135,51 @@
         <div class="container mostPopularDishes">
             <div class="mostPopularDishesText">Самые популярные блюда</div>
             <div class="mostPopularDishesCards row">
-                <div class="col-7">{% include "templates/topDishesCard.html" %}</div>
-                <div class="col-5">{% include "templates/topDishesCard.html" %}</div>
+                <div class="col-7">
+                    <div class="topDishImgDiv">
+                        <img src="/images/image46.svg" alt="topDishImg" class="topDishImg w-100">
+                        <button><img src="/images/unlikedHeart.svg"></button>
+                    </div>
+                    <div class="topDishText row justify-content-between">
+                        <div class="col-auto">
+                            <p style="font-size: 24px;">Название вручую</p>
+                            <div class="topDishTags">
+                                <a class="topDishTag btn">Теги вручую</a>
+                            </div>
+                            <div class="topDishDesc" style="font-size: 9px; margin-bottom: 10px;">Описание вручую</div>
+                        </div>
+                        <div class="col-5" style="margin-top: 7px; white-space: nowrap;">
+                            <p style="font-size: 12px; margin-bottom: 30px; margin-right: 10px;">
+                                <img src="/images/clock.svg" alt="">Время готовки вручную час
+                            </p>
+                        </div>
+                        <a href="/recipe?r={{item.id}}" class="topDishGoAway btn">Посмотреть</a>
+                    </div>
+                </div>
+                <!--  -->
+                <!--  -->
+                <!--  -->
+                <div class="col-5">
+                    <div class="topDishImgDiv">
+                        <img src="/images/image46.svg" alt="topDishImg" class="topDishImg w-100">
+                        <button><img src="/images/unlikedHeart.svg"></button>
+                    </div>
+                    <div class="topDishText row justify-content-between">
+                        <div class="col-auto">
+                            <p style="font-size: 24px;">Название вручую</p>
+                            <div class="topDishTags">
+                                <a class="topDishTag btn">Теги вручую</a>
+                            </div>
+                            <div class="topDishDesc" style="font-size: 9px; margin-bottom: 10px;">Описание вручую</div>
+                        </div>
+                        <div class="col-5" style="margin-top: 7px; white-space: nowrap;">
+                            <p style="font-size: 12px; margin-bottom: 30px; margin-right: 10px;">
+                                <img src="/images/clock.svg" alt="">Время готовки вручную час
+                            </p>
+                        </div>
+                        <a href="/recipe?r=7" class="topDishGoAway btn">Посмотреть</a>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -147,9 +190,6 @@
                     <input type="text" style="border: 0; border-bottom: 1px solid black; font-size: 16px; height: 22px;  position: relative; top: -50%; left: 4%; width: 82%;" placeholder="Введите название">
                 </div>
                 <div class="typesOfIngridients">
-                    {% for ingrtype in ingridientstypes %}
-                    <button class="btn ingrTypesButton"><input type="radio" class="d-none" checked>{{ ingrtype.name }}</button>
-                    {% endfor %}
                     <button class="btn ingrTypesButton"><input type="radio" class="d-none" name="ingrFilter">Овощи</button>
                     <button class="btn ingrTypesButton"><input type="radio" class="d-none" name="ingrFilter">Фрукты</button>
                     <button class="btn ingrTypesButton"><input type="radio" class="d-none" name="ingrFilter">Мясная продукция</button>
@@ -164,7 +204,10 @@
                     <button class="btn ingrTypesButton"><input type="radio" class="d-none" name="ingrFilter">Мясная продукция</button>
                 </div>
                 <div class="EZSearchResults row gx-4 gx-lg-3 gy-5" style="margin-top: 8px;">
-                    <div class="col-lg-2 col-xxl-2 col-xl-2 col-4 col-md-3">{% include "templates/EZSearchRadioButton.html" %}</div>
+                    {% for item in ingridients %}
+                    <div class="col-lg-2 col-xxl-2 col-xl-2 col-4 col-md-3">{% include
+                        "templates/EZSearchRadioButton.html" %}</div>
+                    {% endfor %}
                 </div>
                 <p style="margin-top: 20px;">Блюда</p>
                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3" style="height: 49px; border: 1px black solid; border-radius: 5px;">

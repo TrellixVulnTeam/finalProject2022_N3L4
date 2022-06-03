@@ -105,36 +105,26 @@
 
 
     <main>
-        {% for item in resolve %}
         <div class="container">
             <div class="row gx-4">
                 <div class="col-6">
                     <div class="dishImgDiv"><img src="/images/image46.svg" alt="" class="dishImg"></div>
                     <div class="dishTags">
-                        
                         <a href="" class="topDishTag btn"></a>
-                        
-                        <a href="" class="topDishTag btn">#тыква</a>
-                        <a href="" class="topDishTag btn">#тыква</a>
-                        <a href="" class="topDishTag btn">#тыква</a>
-                        <a href="" class="topDishTag btn">#тыква</a>
+                        <a href="" class="topDishTag btn">#Вкусно!{{tag}}</a>
                     </div>
                 </div>
                 <div class="col-6 dishText">
-                    <p class="w-50">{{item.name}}</p>
+                    <p class="w-50">{{resolve[0].name}}</p>
                     <li>Ингридиенты:</li>
-                    {% for ingr in resolve %}
-                    <li>{{ ingr.name }} - {{ ingr.count }}</li>
+                    {% for item in resolve %}
+                    <li>{{ item.composition }}</li>
                     {% endfor %}
-                    <li>Картофель - 3шт</li>
-                    <li>Картофель - 3шт</li>
-                    <li>Картофель - 3шт</li>
-                    <li>Картофель - 3шт</li>
                 </div>
-                {% for prepStep in resolve %}
+                {% for item in resolve %}
                 <div class="col-6">
-                    <p class="stepMainText"></p>
-                    <div class="stepImgDiv"></div>
+                    <p class="stepMainText">{{item.recipe_steps}}</p>
+                    <div class="stepImgDiv">{{item.recipe_stepImg}}</div>
                 </div>
                 {% endfor %}
                 <div class="col-xl-6 col-xxl-6 col-lg-6 col-md-6col-12">
@@ -142,11 +132,10 @@
                     <div class="stepImgDiv">
                         <img src="/images/stepImg.svg" alt="" class="w-100">
                     </div>
-                    <p class="stepDescText">{{resolve.recipe_steps}}</p>
+                    <p class="stepDescText">{{resolve[0].recipe_steps}}</p>
                 </div>
             </div>
         </div>
-        {% endfor %}
     </main>
 
 

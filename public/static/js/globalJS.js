@@ -15,13 +15,13 @@ let closeMiniMenuTimeout = undefined
 function regMenu() {
     if ($("#logMenus").attr("class").split(" ").indexOf("hidden") != -1) {
         toggleHidden($("#logMenus"))
-        $("#logMenus").click(function (e) { if ($(e.target).closest("#logCurrentMenu").length) { return } toggleHidden($("#logMenus")); $("#logMenus").off("click")})
+        $("#logMenus").click(function (e) { if ($(e.target).closest("#logCurrentMenu").length) { return } toggleHidden($("#logMenus")); $("#logMenus").off("click") })
     }
-    if ($(this).attr("id") == "dishCard"){
+    if ($(this).attr("id") == "dishCard") {
         $("div#dishCardMenu").css("display", "")
         $("div#logCurrentMenu").css("display", "none")
         $("div#logCurrentMenu .enterButton").css("display", "none")
-    }else {
+    } else {
         $("div#logCurrentMenu").css("display", "")
         $("div#dishCardMenu").css("display", "none")
         $("div#logCurrentMenu>div").css("display", "none")
@@ -37,24 +37,37 @@ function toggleHidden(Obj) {
 
 $("button#signInE, button#passwordResetEC, button#signInP").click(regMenu)
 
-$("#searchForm").click( function () {
-    if ($(this).children("button").attr("class") != "btn btn-outline-success"){
+$("#searchForm").click(function () {
+    if ($(this).children("button").attr("class") != "btn btn-outline-success") {
         $(this).children("button").remove()
         $(this).append($("<input>").attr("class", "form-control me-2").attr("type", "search").attr("placeholder", "Search").attr("aria-label", "Search").attr("name", "q").focus())
         $(this).append($("<button>").attr("class", "btn btn-outline-success").attr("type", "submit").text("Search"))
     }
 })
-$("#profile, .profileMiniMenu").hover( function () {
+$("#profile, .profileMiniMenu").hover(function () {
     if ($(".profileMiniMenu").attr("class").split(" ").indexOf("hidden") != -1) {
         toggleHidden($(".profileMiniMenu"))
     }
     if (closeMiniMenuTimeout != undefined) {
         clearTimeout(closeMiniMenuTimeout);
     }
-}, function () {closeMiniMenuTimeout = setTimeout(function () { if ($(".profileMiniMenu").attr("class").split(" ").indexOf("hidden") == -1) { toggleHidden($($(".profileMiniMenu"))); $(document).off("click") } }, 5000); 
-                $(document).off("click").click(function (e) { if ($(e.target).closest("#profile").length) { return } toggleHidden($(".profileMiniMenu")); $(document).off("click"); })
-            })
-$(".topDishImgDiv button").click( function () {
+}, function () {
+    closeMiniMenuTimeout = setTimeout(function () { if ($(".profileMiniMenu").attr("class").split(" ").indexOf("hidden") == -1) { toggleHidden($($(".profileMiniMenu"))); $(document).off("click") } }, 5000);
+    $(document).off("click").click(function (e) { if ($(e.target).closest("#profile").length) { return } toggleHidden($(".profileMiniMenu")); $(document).off("click"); })
+})
+$(".topDishImgDiv button").click(function () {
     console.log($(this).children("img").attr("src"));
     $(this).children("img").attr("src", $(this).children("img").attr("src") == "/images/likedHeart.svg" ? "/images/unlikedHeart.svg" : "/images/likedHeart.svg")
 })
+
+let likebtn = document.getElementById("#likebtn")
+function post () {
+    axios.post("/like", {
+        name: "помогити" ,//обратится к имени каким то образом
+        id: '1'
+    }).then(function (response) {
+        console.log(response);
+    }).catch(function (error) {
+        console.log(error);
+    });
+}

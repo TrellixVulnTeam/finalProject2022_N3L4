@@ -110,8 +110,9 @@
             <div class="row">
                 {% for item in resolve %}
                 <div class="col-4">{% include "templates/topDishesCard.html" %}</div>
-                {% endfor %}
+                {%else%}
                 <div class="blankPattern d-none" style="margin-top: 50px; margin-left: 20px; font-size: 24px;">Пока нет блюд в избранном</div>
+                {% endfor %}
             </div>
         </div>
 

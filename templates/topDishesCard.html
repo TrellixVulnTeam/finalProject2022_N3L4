@@ -20,15 +20,20 @@
 
 <div class="topDishImgDiv">
     <img src="/images/image46.svg" alt="topDishImg" class="topDishImg w-100">
-    <button><img src="/images/unlikedHeart.svg"></button>
+    <form action="/like" method="post">
+        <input hidden="true" type="text" value="{{item.id}}">
+        <input hidden="true" type="text" value="{{item.name}}">
+        <input hidden="true" type="text" value="{{item.time}}">
+        <input hidden="true" type="text" value="{{item.category}}">
+        <input hidden="true" type="text" value="{{item.type}}">
+        <input hidden="true" type="text" value="{{item.description}}">
+    </form>
+    <button ><img src="/images/unlikedHeart.svg" onclick="post()"></button>
 </div>
 <div class="topDishText row justify-content-between">
     <div class="col-auto">
         <p style="font-size: 24px;">{{item.name}}</p>
         <div class="topDishTags">
-            <a class="topDishTag btn">{{item.tag}}</a>
-            <a class="topDishTag btn">{{item.tag}}</a>
-            <a class="topDishTag btn">{{item.tag}}</a>
             <a class="topDishTag btn">{{item.tag}}</a>
         </div>
         <div class="topDishDesc" style="font-size: 9px; margin-bottom: 10px;">{{item.description}}</div>

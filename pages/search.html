@@ -51,7 +51,10 @@
                         </div>
                         <a href="/recipe?r={{item.id}}" class="topDishGoAway btn">Посмотреть</a>
                     </div>
+                    {%else%}
+                    <h1 style="font-family: Bad Script">К сожаленю ничего не найдено... Попробуйте еще раз?</h1>
                 </div>
+
                 {% endfor %}
             </div>
         </div>

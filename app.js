@@ -4,9 +4,9 @@ const port = 3000
 const host = '127.0.0.1';
 const sqlite = require('sqlite3');
 const stringSimilarity = require("string-similarity");
-var bodyParser = require('body-parser')
-app.use(bodyParser.json())
-
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 //<redis>
 const session = require('express-session');
 const redis = require('redis');
@@ -52,11 +52,11 @@ async function get_data(query, data_query) {
         }
     });
     // let dataex = "";
-    for (let i = 0; i < data_query.length; i++) {
-        if (data_query[i].indexOf(",") >= 0) {
-            data_query[i] = data_query[i].split(",").join("', '");
-        }
-    }
+    // for (let i = 0; i < data_query.length; i++) {
+    //     if (data_query[i].indexOf(",") >= 0) {
+    //         data_query[i] = data_query[i].split(",").join("', '");
+    //     }
+    // }
     while (data_query.includes("undefined")) {
         let myIndex = data_query.indexOf('undefined');
         if (myIndex !== -1) {
@@ -70,16 +70,22 @@ async function get_data(query, data_query) {
         all: "SELECT * FROM recipe",
         search: "SELECT * FROM recipe",
         bSearchCheclBx: `${Bsearch}`,//SELECT * FROM recipe WHERE category IN('lunch', 'supper', 'lunch')//`SELECT * FROM recipe WHERE category IN('${data_query.join("', '")}')`
-        index:`SELECT * FROM recipe
-        INNER JOIN SeasonTop ON recipe.id=SeasonTop.id
-          INNER JOIN tags
+        index: `SELECT * FROM recipe
+        FULL OUTER JOIN SeasonTop ON recipe.id=SeasonTop.id
+        FULL OUTER JOIN tags
+        FULL OUTER JOIN recsteps ON recsteps.id = recipe.id
         `,
-        recipe:`SELECT * FROM recipe WHERE ? = id`
+        recipe: `SELECT * FROM recipe WHERE ? LIKE id`,
+        test: `SELECT * FROM recipe JOIN recsteps ON recsteps.id = recipe.id`,
+        test2: `SELECT * FROM recipe 
+        JOIN recsteps ON recsteps.id = recipe.id ORDER BY id`,
+        topdishes: `SELECT * FROM recipe ORDER BY ID`,
+        ingridients: `SELECT * FROM ingridients`,
+        likedplus: `INSERT INTO liked(id,name,time,image,category,type,description) VALUES(?,?,?,?,?,?,?)`,
+        liked: `SELECT * FROM liked`
     }
     let sql = sql_queries[query];
     console.log(sql_queries.bSearchCheclBx);
-    //let sql = "SELECT * FROM users";
-
     let promise = new Promise((resolve, reject) => {
         db.all(sql, data_query, (err, rows) => {
             if (err) {
@@ -94,21 +100,18 @@ async function get_data(query, data_query) {
     db.close();
     return data;
 }
-
 app.get('/', (req, res) => {
     l = []
-    get_data("index", []).then((resolve) => {
-        console.log({resolve})
-        // res.send({resolve})
-        for(i = 0, l = resolve.length; i < l; i++){
-            let unparsedtag = resolve[i]["tag"]
-            let parsedtags= unparsedtag.split(",")
-            
-
-            // console.log(parsedtags)
-            // console.log(resolve[i]["tag"]);
-        }
-        res.render(__dirname + '/pages/index.html', {resolve});
+    get_data("topdishes", []).then((resolve) => {
+        // console.log({resolve})
+        // for(i = 0, l = resolve.length; i < l; i++){
+        //     let unparsedtag = resolve[i]["tag"]
+        //     console.log( resolve[i]["tag"])
+        //     // let tags= unparsedtag.split(",")
+        // }
+        get_data("ingridients", []).then((ingridients) => {
+            res.render(__dirname + '/pages/index.html', { resolve, ingridients });
+        })
     })
 });
 
@@ -120,19 +123,15 @@ app.get('/search', (request, response) => {
         // const data = { resolve };
         for (let i = 0, l = resolve.length; i < l; i++) {
             var obj = resolve[i];
-            // console.log(search, obj.name)
             var similarity = stringSimilarity.compareTwoStrings(String(search == undefined ? "test" : search.toLowerCase()), obj.name.toLowerCase())
             if (similarity >= 0.2) {
-                // console.log(obj.name, 'Сходство(name):', similarity)
                 SearchedList.push(obj)
             }
         }
         for (let i = 0, l = resolve.length; i < l; i++) {
             var obj = resolve[i];
-            // console.log(search, obj.name)
             var similarity = stringSimilarity.compareTwoStrings(String(search == undefined ? "test" : search.toLowerCase()), obj.category.toLowerCase())
             if (similarity >= 0.2) {
-                // console.log(obj.name, 'Сходство(name):', similarity)
                 SearchedList.push(obj)
             }
         }
@@ -149,11 +148,6 @@ app.get('/signUp', function (request, response) {
         response.render(__dirname + '/pages/signUp.html', resolve);
     })
 })
-app.get('/Liked', function (req, res) {
-    get_data("all", []).then((resolve) => {
-        res.render(__dirname + '/pages/Liked.html', resolve);
-    })
-})
 
 app.get('/bettersearch1', (request, res) => {
     let q1 = String(request.query.q1);
@@ -161,57 +155,37 @@ app.get('/bettersearch1', (request, res) => {
     let q3 = String(request.query.q3);
     get_data("bSearchCheclBx", [q1, q2, q3]).then((resolve) => {
         res.json(resolve);
-        // res.render(__dirname + '/pages/bsearch.html', resolve);
     })
 })
-
+app.get('/Liked', function (req, res) {
+    get_data("liked", []).then((resolve) => {
+        res.render(__dirname + '/pages/Liked.html', { resolve });
+    })
+})
+app.post('/like', function (req, res) {
+    let q1 = req.body.id
+    let q2 = req.body.name
+    let q3 = req.body.time
+    let q4 = req.body.image
+    let q5 = req.body.category
+    let q6 = req.body.type
+    let q7 = req.body.description//id,name,time,image,category,type,description
+    let test = req.body.firstName
+    get_data("likedplus", [q1, q2, q3, q4, q5, q6, q7]).then((resolve) => {
+        // console.log(Aname)
+        console.log(resolve)
+        
+        // res.render(__dirname + '/pages/Liked.html', { resolve });
+    })
+})
 app.get('/recipe', (req, res) => {
-    let r= req.query.r;
+    let r = req.query.r;
     console.log(r)
+
     get_data("recipe", [r]).then((resolve) => {
-        console.log({resolve})
-        res.render(__dirname + '/pages/recipe.html', {resolve});
+        res.render(__dirname + '/pages/recipe.html', { resolve });
     })
 })
-// app.get("/index", (request, response) => {
-
-//     var items = {
-//         "cards":
-//             [{
-//                 "name": "Жаркое",
-//                 "image": ".png",
-//                 "tags": [{ "tagName": "asd" }, { "tagName": "dsa" }],
-//                 "descripton": "Lorem ipsum dolor sit amet.",
-//                 "preptime": "1 час",
-//                 "ingredients": [{ "name": "морковь", "count": "1шт" }, { "name": "сметана", "count": "1 ст.л." }],
-
-//             },
-//             {
-//                 "name": "Жаркое",
-//                 "image": ".png",
-//                 "tags": [{ "tagName": "asd" }, { "tagName": "dsa" }],
-//                 "descripton": "Lorem ipsum dolor sit amet.",
-//                 "preptime": "1 час",
-//                 "ingredients": [{ "name": "морковь", "count": "1шт" }, { "name": "сметана", "count": "1 ст.л." }],
-
-//             }]
-//     };
-//     switch (request.query.requestName) {
-//         case "dishCardImport":
-//             response.send();
-//         // response.send(items["cards"].find(dish => dish.name === request["dishName"]));
-//             response.send("1");
-//             break;
-//             // response.send(items["cards"].find(dish => dish.name === request["dishName"]));
-//         case "logInUser":
-//             response.send("2");
-//             break;
-//         case "findIngrOfType":
-//             response.send("3")
-//             break
-//     }
-// })
-
 app.listen(port, function () {
     console.log(`Server stated on: http://${host}:${port}`)
 });
