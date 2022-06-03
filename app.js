@@ -149,6 +149,11 @@ app.get('/signUp', function (request, response) {
         response.render(__dirname + '/pages/signUp.html', resolve);
     })
 })
+app.get('/Liked', function (req, res) {
+    get_data("all", []).then((resolve) => {
+        res.render(__dirname + '/pages/Liked.html', resolve);
+    })
+})
 
 app.get('/bettersearch1', (request, res) => {
     let q1 = String(request.query.q1);
