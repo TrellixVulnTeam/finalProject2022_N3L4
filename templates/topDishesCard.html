@@ -19,7 +19,7 @@
 </div> -->
 
 <div class="topDishImgDiv">
-    <img src="/images/image46.svg" alt="topDishImg" class="topDishImg w-100">
+    <img src="/images/{{item.image}}" alt="topDishImg" class="topDishImg w-100">
     <form action="/like" method="post">
         <input hidden="true" type="text" value="{{item.id}}">
         <input hidden="true" type="text" value="{{item.name}}">
@@ -28,7 +28,7 @@
         <input hidden="true" type="text" value="{{item.type}}">
         <input hidden="true" type="text" value="{{item.description}}">
     </form>
-    <button ><img src="/images/unlikedHeart.svg" onclick="post()"></button>
+    <button class="buttonLiked" id="{{item.id}}"><img src="/images/unlikedHeart.svg" onclick="post()"></button>
 </div>
 <div class="topDishText row justify-content-between">
     <div class="col-auto">

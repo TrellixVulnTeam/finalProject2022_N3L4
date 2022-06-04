@@ -82,7 +82,8 @@ async function get_data(query, data_query) {
         topdishes: `SELECT * FROM recipe ORDER BY ID`,
         ingridients: `SELECT * FROM ingridients`,
         likedplus: `INSERT INTO liked(id,name,time,image,category,type,description) VALUES(?,?,?,?,?,?,?)`,
-        liked: `SELECT * FROM liked`
+        liked: `SELECT * FROM liked`,
+        new:`SELECT * FROM recipe WHERE id LIKE ?`
     }
     let sql = sql_queries[query];
     console.log(sql_queries.bSearchCheclBx);
@@ -135,7 +136,15 @@ app.get('/search', (request, response) => {
                 SearchedList.push(obj)
             }
         }
+        for (let i = 0, l = resolve.length; i < l; i++) {
+            var obj = resolve[i];
+            var similarity = stringSimilarity.compareTwoStrings(String(search == undefined ? "test" : search.toLowerCase()), obj.tag.toLowerCase())
+            if (similarity >= 0.2) {
+                SearchedList.push(obj)
+            }
+        }
         response.render(__dirname + '/pages/search.html', { SearchedList });
+
     })
 })
 app.get('/bettersearch', function (request, response) {
@@ -164,17 +173,18 @@ app.get('/Liked', function (req, res) {
 })
 app.post('/like', function (req, res) {
     let q1 = req.body.id
-    let q2 = req.body.name
-    let q3 = req.body.time
-    let q4 = req.body.image
-    let q5 = req.body.category
-    let q6 = req.body.type
-    let q7 = req.body.description//id,name,time,image,category,type,description
-    let test = req.body.firstName
-    get_data("likedplus", [q1, q2, q3, q4, q5, q6, q7]).then((resolve) => {
+    // let q2 = req.body.name
+    // let q3 = req.body.time
+    // let q4 = req.body.image
+    // let q5 = req.body.category
+    // let q6 = req.body.type
+    // let q7 = req.body.description//id,name,time,image,category,type,description
+    // let test = req.body.firstName
+    get_data("new", [q1]).then(({resolve}) => {//likedplus
         // console.log(Aname)
-        console.log(resolve)
-        
+        let q2=resolve.id
+        console.log(q2)
+
         // res.render(__dirname + '/pages/Liked.html', { resolve });
     })
 })

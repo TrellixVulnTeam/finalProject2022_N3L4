@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,7 +17,7 @@
     <script src="/js/nunjucks.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <title>Сборник рецептов</title>
-<script src="/js/headerJS.js" defer></script>
+    <script src="/js/headerJS.js" defer></script>
 
 </head>
 
@@ -28,17 +29,23 @@
             <div class="topDishesCards row gx-4 gy-4">
                 {% for item in SearchedList %}
                 <div class="col-3">
+
                     <div class="topDishImgDiv">
-                        <img src="/images/image46.svg" alt="topDishImg" class="topDishImg w-100">
-                        <button><img src="/images/unlikedHeart.svg"></button>
+                        <img src="/images/{{item.image}}" alt="topDishImg" class="topDishImg w-100">
+                        <form action="/like" method="post">
+                            <input hidden="true" type="text" value="{{item.id}}">
+                            <input hidden="true" type="text" value="{{item.name}}">
+                            <input hidden="true" type="text" value="{{item.time}}">
+                            <input hidden="true" type="text" value="{{item.category}}">
+                            <input hidden="true" type="text" value="{{item.type}}">
+                            <input hidden="true" type="text" value="{{item.description}}">
+                        </form>
+                        <button><img src="/images/unlikedHeart.svg" onclick="post()"></button>
                     </div>
                     <div class="topDishText row justify-content-between">
                         <div class="col-auto">
                             <p style="font-size: 24px;">{{item.name}}</p>
                             <div class="topDishTags">
-                                <a class="topDishTag btn">{{item.tag}}</a>
-                                <a class="topDishTag btn">{{item.tag}}</a>
-                                <a class="topDishTag btn">{{item.tag}}</a>
                                 <a class="topDishTag btn">{{item.tag}}</a>
                             </div>
                             <div class="topDishDesc" style="font-size: 9px; margin-bottom: 10px;">{{item.description}}
@@ -51,12 +58,13 @@
                         </div>
                         <a href="/recipe?r={{item.id}}" class="topDishGoAway btn">Посмотреть</a>
                     </div>
-                    {%else%}
-                    <h1 style="font-family: Bad Script">К сожаленю ничего не найдено... Попробуйте еще раз?</h1>
                 </div>
-
-                {% endfor %}
+                {%else%}
+                <h1 style="font-family: Bad Script">К сожаленю ничего не найдено... Попробуйте еще раз?</h1>
             </div>
+
+            {% endfor %}
+        </div>
         </div>
     </main>
 

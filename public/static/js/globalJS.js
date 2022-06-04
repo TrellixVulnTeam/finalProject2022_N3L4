@@ -56,18 +56,16 @@ $("#profile, .profileMiniMenu").hover(function () {
     $(document).off("click").click(function (e) { if ($(e.target).closest("#profile").length) { return } toggleHidden($(".profileMiniMenu")); $(document).off("click"); })
 })
 $(".topDishImgDiv button").click(function () {
-    console.log($(this).children("img").attr("src"));
     $(this).children("img").attr("src", $(this).children("img").attr("src") == "/images/likedHeart.svg" ? "/images/unlikedHeart.svg" : "/images/likedHeart.svg")
 })
 
 let likebtn = document.getElementById("#likebtn")
-function post () {
+$(".buttonLiked").click(function (){
     axios.post("/like", {
-        name: "помогити" ,//обратится к имени каким то образом
-        id: '1'
-    }).then(function (response) {
+        id: $(this).attr("id")
+        }).then(function (response) {
         console.log(response);
     }).catch(function (error) {
         console.log(error);
     });
-}
+})
